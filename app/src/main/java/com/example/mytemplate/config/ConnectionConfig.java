@@ -9,6 +9,8 @@ import retrofit2.converter.gson.GsonConverterFactory;
 
 public class ConnectionConfig {
 
+    private final static String baseUrl = GlobalConfig.getBaseUrlExample();
+
     private static Retrofit getRetrofitBuilder(String baseUrl){
         HttpLoggingInterceptor logging = new HttpLoggingInterceptor();
         logging.setLevel(HttpLoggingInterceptor.Level.BODY);
@@ -26,17 +28,12 @@ public class ConnectionConfig {
     }
 
     public static GlobalEndpoint clientService(){
-        return getRetrofitBuilder(GlobalConfig.getBaseUrl())
+        return getRetrofitBuilder(baseUrl)
                 .create(GlobalEndpoint.class);
     }
 
     public static GlobalEndpoint clientService(String baseUrl){
         return getRetrofitBuilder(baseUrl)
                 .create(GlobalEndpoint.class);
-    }
-
-    public static GlobalEndpoint clientService(Class className){
-        return (GlobalEndpoint) getRetrofitBuilder(GlobalConfig.getBaseUrl())
-                .create(className);
     }
 }

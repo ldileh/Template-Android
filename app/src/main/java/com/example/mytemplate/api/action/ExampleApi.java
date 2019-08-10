@@ -3,8 +3,8 @@ package com.example.mytemplate.api.action;
 import android.content.Context;
 
 import com.example.mytemplate.actionView.ResponseApiDefault;
+import com.example.mytemplate.base.BaseActionApi;
 import com.example.mytemplate.config.ConnectionConfig;
-import com.example.mytemplate.config.GlobalConfig;
 import com.example.mytemplate.main.model.api.GithubRepoResponseModel;
 
 import java.util.List;
@@ -21,7 +21,7 @@ public class ExampleApi extends BaseActionApi {
     }
 
     public void getUserRepo(ResponseApiDefault<List<GithubRepoResponseModel>> callback, String username){
-        ConnectionConfig.clientService(GlobalConfig.getBaseUrlExample())
+        ConnectionConfig.clientService()
                 .example(username)
                 .enqueue(new Callback<List<GithubRepoResponseModel>>() {
                     @EverythingIsNonNull

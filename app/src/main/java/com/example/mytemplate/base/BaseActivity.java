@@ -1,4 +1,4 @@
-package com.example.mytemplate.main.view.activity.base;
+package com.example.mytemplate.base;
 
 import android.annotation.SuppressLint;
 import android.os.StrictMode;

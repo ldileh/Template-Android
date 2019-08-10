@@ -1,4 +1,4 @@
-package com.example.mytemplate.api.action;
+package com.example.mytemplate.base;
 
 import android.content.Context;
 
@@ -6,15 +6,15 @@ import com.example.mytemplate.utils.UserMessage;
 
 import retrofit2.Response;
 
-class BaseActionApi {
+public class BaseActionApi {
 
     private Context context;
 
-    BaseActionApi(Context context){
+    public BaseActionApi(Context context){
         this.context = context;
     }
 
-    boolean checkResponseIsSuccess(Response response){
+    protected boolean checkResponseIsSuccess(Response response){
         if(response.code() == 200) return true;
 
         if(response.code() == 401 && context != null)

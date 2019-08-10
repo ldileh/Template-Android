@@ -3,7 +3,6 @@ package com.example.mytemplate.main.view.activity;
 import android.os.Bundle;
 import android.widget.ListView;
 
-import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 
 import com.example.mytemplate.R;
@@ -12,7 +11,7 @@ import com.example.mytemplate.api.action.ExampleApi;
 import com.example.mytemplate.main.model.api.GithubRepoResponseModel;
 import com.example.mytemplate.main.model.local.DefaultItemList;
 import com.example.mytemplate.main.view.activity.adapter.ExampleAdapterListView;
-import com.example.mytemplate.main.view.activity.base.BaseActivity;
+import com.example.mytemplate.base.BaseActivity;
 import com.example.mytemplate.main.view.activity.dialog.CustomProgressDialog;
 
 import java.util.ArrayList;
