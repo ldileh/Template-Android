@@ -14,5 +14,4 @@ public class GithubRepoResponseModel {
     public String getName() {
         return name;
     }
-
 }

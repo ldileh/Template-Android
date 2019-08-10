@@ -16,8 +16,6 @@ import retrofit2.internal.EverythingIsNonNull;
 
 public class ExampleApi extends BaseActionApi {
 
-    public ExampleApi(){}
-
     public ExampleApi(Context context){
         super(context);
     }

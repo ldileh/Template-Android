@@ -3,6 +3,7 @@ package com.example.mytemplate.main.view.activity;
 import android.os.Bundle;
 import android.widget.ListView;
 
+import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 
 import com.example.mytemplate.R;
@@ -39,6 +40,7 @@ public class MainActivity extends BaseActivity {
     private void callApi(){
         CustomProgressDialog.showDialog(MainActivity.this);
         new ExampleApi(MainActivity.this).getUserRepo(new ResponseApiDefault<List<GithubRepoResponseModel>>() {
+
             @Override
             public void successApi(Response<List<GithubRepoResponseModel>> response) {
                 CustomProgressDialog.closeDialog();

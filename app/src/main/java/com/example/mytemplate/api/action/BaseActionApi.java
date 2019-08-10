@@ -10,8 +10,6 @@ class BaseActionApi {
 
     private Context context;
 
-    BaseActionApi(){}
-
     BaseActionApi(Context context){
         this.context = context;
     }
@@ -24,6 +22,9 @@ class BaseActionApi {
 
         if(response.code() >= 500 && context != null)
             UserMessage.defaultMessage(context, "Something went wrong in server!");
+
+        if(response.body() == null && context != null)
+            UserMessage.defaultMessage(context, "Response is empty");
 
         return false;
     }
