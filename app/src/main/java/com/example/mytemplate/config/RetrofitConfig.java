@@ -1,13 +1,13 @@
 package com.example.mytemplate.config;
 
-import com.example.mytemplate.api.webRoot.GlobalEndpoint;
+import com.example.mytemplate.api.GlobalApiServices;
 
 import okhttp3.OkHttpClient;
 import okhttp3.logging.HttpLoggingInterceptor;
 import retrofit2.Retrofit;
 import retrofit2.converter.gson.GsonConverterFactory;
 
-public class ConnectionConfig {
+public class RetrofitConfig {
 
     private final static String baseUrl = GlobalConfig.getBaseUrlExample();
 
@@ -27,13 +27,13 @@ public class ConnectionConfig {
                 .build();
     }
 
-    public static GlobalEndpoint clientService(){
+    public static GlobalApiServices clientService(){
         return getRetrofitBuilder(baseUrl)
-                .create(GlobalEndpoint.class);
+                .create(GlobalApiServices.class);
     }
 
-    public static GlobalEndpoint clientService(String baseUrl){
+    public static GlobalApiServices clientService(String baseUrl){
         return getRetrofitBuilder(baseUrl)
-                .create(GlobalEndpoint.class);
+                .create(GlobalApiServices.class);
     }
 }

@@ -1,11 +1,10 @@
-package com.example.mytemplate.main.view.activity.dialog;
+package com.example.mytemplate.main.view.dialog;
 
 import android.app.Dialog;
 import android.content.Context;
 import android.os.Bundle;
 
 import com.example.mytemplate.R;
-import com.example.mytemplate.main.view.activity.MainActivity;
 
 public class  CustomProgressDialog extends Dialog {
 

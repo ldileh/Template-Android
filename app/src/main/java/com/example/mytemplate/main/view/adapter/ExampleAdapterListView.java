@@ -1,4 +1,4 @@
-package com.example.mytemplate.main.view.activity.adapter;
+package com.example.mytemplate.main.view.adapter;
 
 import android.annotation.SuppressLint;
 import android.content.Context;
