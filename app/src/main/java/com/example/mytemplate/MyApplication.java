@@ -1,8 +1,8 @@
 package com.example.mytemplate;
 
-import android.app.Application;
+import com.orm.SugarApp;
 
-public class MyApplication extends Application {
+public class MyApplication extends SugarApp {
 
     @Override
     public void onCreate() {
