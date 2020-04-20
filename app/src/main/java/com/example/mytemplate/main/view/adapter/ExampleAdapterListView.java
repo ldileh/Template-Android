@@ -9,7 +9,7 @@ import android.widget.BaseAdapter;
 import android.widget.TextView;
 
 import com.example.mytemplate.R;
-import com.example.mytemplate.main.model.local.DefaultItemList;
+import com.example.mytemplate.main.model.pojo.DefaultItemList;
 
 import java.util.List;
 

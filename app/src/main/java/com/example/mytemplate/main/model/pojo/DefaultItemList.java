@@ -1,4 +1,4 @@
-package com.example.mytemplate.main.model.local;
+package com.example.mytemplate.main.model.pojo;
 
 public class DefaultItemList {
 

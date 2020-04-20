@@ -9,7 +9,7 @@ import com.example.mytemplate.R;
 import com.example.mytemplate.actionView.ResponseApiDefault;
 import com.example.mytemplate.api.GlobalApi;
 import com.example.mytemplate.main.model.api.GithubRepoResponseModel;
-import com.example.mytemplate.main.model.local.DefaultItemList;
+import com.example.mytemplate.main.model.pojo.DefaultItemList;
 import com.example.mytemplate.main.view.adapter.ExampleAdapterListView;
 import com.example.mytemplate.base.BaseActivity;
 import com.example.mytemplate.main.view.dialog.CustomProgressDialog;
