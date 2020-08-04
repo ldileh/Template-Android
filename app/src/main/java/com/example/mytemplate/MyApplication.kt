@@ -1,9 +1,6 @@
 package com.example.mytemplate
 
-import com.orm.SugarApp
+import android.app.Application
 
-class MyApplication : SugarApp() {
-    override fun onCreate() {
-        super.onCreate()
-    }
+class MyApplication : Application() {
 }
