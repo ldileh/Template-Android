@@ -1,6 +1,8 @@
 package com.example.mytemplate.base
 
 import android.content.Context
+import com.example.mytemplate.api.RoutesApi
+import com.example.mytemplate.config.RetrofitConfig
 import com.example.mytemplate.utils.UserMessage
 import retrofit2.Response
 
@@ -24,4 +26,8 @@ open class BaseActionApi(private val context: Context?) {
 
         else -> true
     }
+
+    protected fun <T> createService(serviceClass: Class<T>): T = RetrofitConfig
+            .getRetrofitBuilder(RetrofitConfig.baseUrl)
+            .create(serviceClass)
 }

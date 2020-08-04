@@ -1,7 +1,6 @@
 package com.example.mytemplate.main.view.activity
 
 import android.os.Bundle
-import android.widget.ListView
 import com.example.mytemplate.R
 import com.example.mytemplate.base.ResponseApi
 import com.example.mytemplate.api.GlobalApi
@@ -46,6 +45,6 @@ class MainActivity : BaseActivity() {
     }
 
     private fun configureListView(mItems: List<DefaultItemList>) {
-        list?.adapter = ExampleAdapterListView(this@MainActivity, mItems)
+        list?.adapter = ExampleAdapterListView(mItems)
     }
 }

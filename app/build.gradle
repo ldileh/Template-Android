@@ -5,7 +5,7 @@ apply plugin: 'kotlin-android-extensions'
 
 android {
     compileSdkVersion 29
-    buildToolsVersion "29.0.0"
+    buildToolsVersion "29.0.3"
     defaultConfig {
         applicationId "com.example.mytemplate"
         minSdkVersion 19
@@ -38,15 +38,15 @@ dependencies {
 
     // kotlin
     implementation "org.jetbrains.kotlin:kotlin-stdlib-jdk7:$kotlin_version"
-    implementation "androidx.core:core-ktx:1.2.0"
+    implementation "androidx.core:core-ktx:1.3.1"
 
     // sugar orm
     implementation 'com.github.satyan:sugar:1.5'
 
     // retrofit
     implementation 'com.squareup.retrofit2:retrofit:2.6.0'
-    implementation 'com.squareup.retrofit2:converter-gson:2.3.0'
-    implementation 'com.squareup.okhttp3:logging-interceptor:3.9.0'
+    implementation 'com.squareup.retrofit2:converter-gson:2.6.0'
+    implementation 'com.squareup.okhttp3:logging-interceptor:3.10.0'
 
     /* start image downloader */
     implementation 'com.github.ldileh:Image-Downloader:0.03'
@@ -54,7 +54,7 @@ dependencies {
     implementation 'com.github.bumptech.glide:glide:4.11.0'
     kapt 'com.github.bumptech.glide:compiler:4.11.0'
     // okhttp
-    implementation 'com.squareup.okhttp3:okhttp:3.12.0'
+    implementation 'com.squareup.okhttp3:okhttp:3.12.1'
     /* end main library */
 }
 repositories {

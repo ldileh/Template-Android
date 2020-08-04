@@ -3,7 +3,6 @@ package com.example.mytemplate.api
 import android.content.Context
 import com.example.mytemplate.base.ResponseApi
 import com.example.mytemplate.base.BaseActionApi
-import com.example.mytemplate.config.RetrofitConfig
 import com.example.mytemplate.main.model.api.GithubRepoResponseModel
 import retrofit2.Call
 import retrofit2.Callback
@@ -11,12 +10,8 @@ import retrofit2.Response
 
 class GlobalApi(context: Context) : BaseActionApi(context) {
 
-    private fun clientService(): RoutesApi = RetrofitConfig
-            .getRetrofitBuilder(RetrofitConfig.baseUrl)
-            .create(RoutesApi::class.java)
-
     fun getUserRepo(callback: ResponseApi<List<GithubRepoResponseModel>>, username: String) {
-        clientService()
+        createService(RoutesApi::class.java)
                 .example(username)
                 .enqueue(object : Callback<List<GithubRepoResponseModel>> {
 
