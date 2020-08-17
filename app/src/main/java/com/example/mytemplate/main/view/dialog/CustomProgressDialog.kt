@@ -11,13 +11,12 @@ class CustomProgressDialog private constructor(context: Context) : Dialog(contex
 
     companion object {
         private val TAG = CustomProgressDialog::class.java.simpleName
-
         private var dialog: CustomProgressDialog? = null
 
         fun showDialog(context: Context?) {
-            if (dialog != null && dialog!!.isShowing) return
-
             try {
+                if (dialog != null && dialog!!.isShowing) return
+
                 context?.let {
                     dialog = CustomProgressDialog(context)
                     dialog!!.show()

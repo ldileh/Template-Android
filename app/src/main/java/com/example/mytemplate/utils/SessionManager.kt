@@ -31,7 +31,10 @@ class SessionManager(private val context: Context) {
      * Clear shared preference
      */
     @SuppressLint("CommitPrefEdits")
-    fun clearSession(): Unit = getSessionSharedPreference().edit().clear().apply()
+    fun clearSession(callback: () -> Unit){
+        getSessionSharedPreference().edit().clear().apply()
+        callback()
+    }
 
     fun getToken(): String? = getSessionSharedPreference().getString(KEY_TOKEN, null)
 

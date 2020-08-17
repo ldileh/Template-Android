@@ -3,17 +3,19 @@ package com.example.mytemplate.main.view.activity
 import android.os.Bundle
 import com.example.mytemplate.R
 import com.example.mytemplate.base.ResponseApi
-import com.example.mytemplate.api.GlobalApi
 import com.example.mytemplate.base.BaseActivity
-import com.example.mytemplate.main.model.api.GithubRepoResponseModel
 import com.example.mytemplate.main.model.pojo.DefaultItemList
+import com.example.mytemplate.main.presenter.MainPresenter
 import com.example.mytemplate.main.view.adapter.ExampleAdapterListView
 import com.example.mytemplate.main.view.dialog.CustomProgressDialog
+import com.ldileh.imagedownloadmanager.ImageDownloader
 import kotlinx.android.synthetic.main.activity_main.*
-import retrofit2.Response
-import java.util.*
 
 class MainActivity : BaseActivity() {
+
+    private val presenter: MainPresenter by lazy {
+        MainPresenter(this@MainActivity)
+    }
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -25,23 +27,18 @@ class MainActivity : BaseActivity() {
 
     private fun callApi() {
         CustomProgressDialog.showDialog(this@MainActivity)
-        GlobalApi(this@MainActivity).getUserRepo(object : ResponseApi<List<GithubRepoResponseModel>> {
-            override fun successApi(response: Response<List<GithubRepoResponseModel>>) {
+        presenter.callUsers("mojombo", object : ResponseApi<List<DefaultItemList>>{
+
+            override fun successApi(result: List<DefaultItemList>?) {
                 CustomProgressDialog.closeDialog()
 
-                val mItems: MutableList<DefaultItemList> = ArrayList()
-                // parse response api
-                response.body()?.let {
-                    for (item in it)
-                        mItems.add(DefaultItemList(item.id, item.name))
-                }
-                configureListView(mItems)
+                configureListView(result ?: mutableListOf())
             }
 
-            override fun failedApi(response: Response<List<GithubRepoResponseModel>>?, message: String) {
+            override fun failedApi(message: String) {
                 CustomProgressDialog.closeDialog()
             }
-        }, "mojombo")
+        })
     }
 
     private fun configureListView(mItems: List<DefaultItemList>) {
