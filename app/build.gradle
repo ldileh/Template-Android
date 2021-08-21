@@ -1,19 +1,23 @@
-apply plugin: 'com.android.application'
-apply plugin: 'kotlin-android'
-apply plugin: 'kotlin-kapt'
-apply plugin: 'kotlin-android-extensions'
+plugins{
+    id 'com.android.application'
+    id 'kotlin-android'
+    id 'kotlin-kapt'
+    id 'kotlin-android-extensions'
+}
 
 android {
-    compileSdkVersion 29
-    buildToolsVersion "29.0.3"
+    compileSdk ConfigData.sdk
+
     defaultConfig {
         applicationId "com.example.mytemplate"
-        minSdkVersion 19
-        targetSdkVersion 29
-        versionCode 1
-        versionName "1.0"
+        minSdk ConfigData.minSdk
+        targetSdk ConfigData.targetSdk
+        versionCode ConfigData.versionCode
+        versionName ConfigData.versionName
+
         testInstrumentationRunner "androidx.test.runner.AndroidJUnitRunner"
     }
+
     buildTypes {
         release {
             minifyEnabled false
@@ -21,45 +25,41 @@ android {
         }
     }
 
-    // Butterknife requires Java 8.
     compileOptions {
         sourceCompatibility JavaVersion.VERSION_1_8
         targetCompatibility JavaVersion.VERSION_1_8
+    }
+    kotlinOptions {
+        jvmTarget = '1.8'
     }
 }
 
 dependencies {
     implementation fileTree(dir: 'libs', include: ['*.jar'])
-    implementation 'androidx.appcompat:appcompat:1.2.0'
-    implementation 'androidx.constraintlayout:constraintlayout:1.1.3'
-    testImplementation 'junit:junit:4.12'
-    androidTestImplementation 'androidx.test:runner:1.2.0'
-    androidTestImplementation 'androidx.test.espresso:espresso-core:3.2.0'
+    implementation Deps.appCompat
+    implementation Deps.material
+    testImplementation Deps.jUnit
 
     // kotlin
-    implementation "org.jetbrains.kotlin:kotlin-stdlib-jdk7:$kotlin_version"
-    implementation "androidx.core:core-ktx:1.3.1"
-    implementation 'org.jetbrains.kotlinx:kotlinx-coroutines-core:1.3.8'
-    implementation "org.jetbrains.kotlinx:kotlinx-coroutines-android:1.3.8"
+    implementation Deps.KotlinCore
+    implementation Deps.KotlinStdlib
+    implementation Deps.KotlinCoroutinesCore
+    implementation Deps.KotlinCoroutinesAndroid
 
     // room database
-    implementation "android.arch.persistence.room:runtime:1.1.1"
-    annotationProcessor "android.arch.persistence.room:compiler:1.1.1"
+    implementation Deps.RoomRuntime
+    annotationProcessor Deps.RoomCompiler
 
     // retrofit
-    implementation 'com.squareup.retrofit2:retrofit:2.6.0'
-    implementation 'com.squareup.retrofit2:converter-gson:2.6.0'
-    implementation 'com.squareup.okhttp3:logging-interceptor:3.10.0'
-    implementation 'com.squareup.retrofit2:converter-scalars:2.1.0'
+    implementation Deps.RetrofitOkhttp
+    implementation Deps.RetrofitCore
+    implementation Deps.RetrofitConverterGson
+    implementation Deps.RetrofitLoggingInterceptor
+    implementation Deps.RetrofitConverterScalars
 
-    /* start image downloader */
-    implementation 'com.github.ldileh:Image-Downloader:0.03'
     // glide
-    implementation 'com.github.bumptech.glide:glide:4.11.0'
-    kapt 'com.github.bumptech.glide:compiler:4.11.0'
-    // okhttp
-    implementation 'com.squareup.okhttp3:okhttp:3.12.1'
-    /* end main library */
+    implementation Deps.GlideCore
+    kapt Deps.GlideCompiler
 }
 repositories {
     mavenCentral()

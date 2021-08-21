@@ -7,39 +7,7 @@ import android.util.Log
 import com.example.mytemplate.R
 import java.lang.Exception
 
-class CustomProgressDialog private constructor(context: Context) : Dialog(context) {
-
-    companion object {
-        private val TAG = CustomProgressDialog::class.java.simpleName
-        private var dialog: CustomProgressDialog? = null
-
-        fun showDialog(context: Context?) {
-            try {
-                if (dialog != null && dialog!!.isShowing) return
-
-                context?.let {
-                    dialog = CustomProgressDialog(context)
-                    dialog!!.show()
-                }
-            }catch (e: Exception){
-                Log.e(TAG, e.message ?: "showDialog: error while show dialog")
-            }
-        }
-
-        fun closeDialog() {
-            try {
-                dialog?.let {
-                    if(it.isShowing)
-                        it.dismiss()
-                }
-
-                // remove dialog from memory
-                dialog = null
-            }catch (e: Exception){
-                Log.e(TAG, e.message ?: "showDialog: error while close dialog")
-            }
-        }
-    }
+class CustomProgressDialog(context: Context) : Dialog(context) {
 
     init {
         // dialog configuration
@@ -49,5 +17,18 @@ class CustomProgressDialog private constructor(context: Context) : Dialog(contex
     override fun onCreate(savedInstanceState: Bundle) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.dialog_progress)
+    }
+
+    fun showDialog(isShow: Boolean) {
+        try {
+            if (isShow){
+                if (!isShowing) show()
+            }else{
+                if (isShowing) dismiss()
+            }
+
+        }catch (e: Exception){
+            Log.e(CustomProgressDialog::class.java.simpleName, e.message ?: "error while ${if (isShow) "show" else "hide"} dialog")
+        }
     }
 }

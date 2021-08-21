@@ -7,8 +7,7 @@ object GlobalConfig {
     private const val baseUrlExample = "https://api.github.com/"
     private const val baseUrlProduction = baseUrlExample
     private const val baseUrlDev = baseUrlExample
-    val baseUrl: String
-        get() = if (isDebug) baseUrlDev else baseUrlProduction
+    val baseUrl: String get() = if (isDebug) baseUrlDev else baseUrlProduction
 
     // shared preference
     const val sharePreferenceSession = "template_sp_session"
