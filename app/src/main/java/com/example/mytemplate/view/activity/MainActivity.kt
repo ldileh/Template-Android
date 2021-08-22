@@ -1,12 +1,12 @@
-package com.example.mytemplate.main.view.activity
+package com.example.mytemplate.view.activity
 
 import android.os.Bundle
 import com.example.mytemplate.base.BaseActivity
 import com.example.mytemplate.base.ResponseApi
 import com.example.mytemplate.databinding.ActivityMainBinding
-import com.example.mytemplate.main.model.pojo.DefaultItemList
-import com.example.mytemplate.main.presenter.MainPresenter
-import com.example.mytemplate.main.view.adapter.ExampleAdapterListView
+import com.example.mytemplate.data.local.model.DefaultItemList
+import com.example.mytemplate.presenter.MainPresenter
+import com.example.mytemplate.view.adapter.ExampleAdapterListView
 
 class MainActivity : BaseActivity<ActivityMainBinding>(ActivityMainBinding::inflate) {
 

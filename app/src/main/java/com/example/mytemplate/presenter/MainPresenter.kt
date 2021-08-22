@@ -1,10 +1,10 @@
-package com.example.mytemplate.main.presenter
+package com.example.mytemplate.presenter
 
 import android.content.Context
 import com.example.mytemplate.data.remote.GlobalApi
 import com.example.mytemplate.base.BasePresenter
 import com.example.mytemplate.base.ResponseApi
-import com.example.mytemplate.main.model.pojo.DefaultItemList
+import com.example.mytemplate.data.local.model.DefaultItemList
 import com.example.mytemplate.utils.UserMessage
 import com.example.mytemplate.utils.checkResponse
 import kotlinx.coroutines.launch

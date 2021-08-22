@@ -1,4 +1,4 @@
-package com.example.mytemplate.main.view.activity
+package com.example.mytemplate.view.activity
 
 import android.os.Bundle
 import com.example.mytemplate.base.BaseActivity

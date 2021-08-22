@@ -1,4 +1,4 @@
-package com.example.mytemplate.main.model.pojo
+package com.example.mytemplate.data.local.model
 
 class DefaultItemList(id: Int, text: String) {
     var id = -1

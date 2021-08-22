@@ -1,6 +1,6 @@
 package com.example.mytemplate.data.remote
 
-import com.example.mytemplate.main.model.api.GithubRepoResponseModel
+import com.example.mytemplate.data.remote.model.GithubRepoResponseModel
 import retrofit2.Call
 import retrofit2.http.GET
 import retrofit2.http.Path
