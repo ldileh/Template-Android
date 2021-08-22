@@ -4,8 +4,9 @@ object Versions{
     const val material = "1.4.0"
     const val constraintLayout = "2.1.0"
     const val jUnit = "4.13.2"
-    const val room = "1.1.1"
+    const val room = "2.3.0"
     const val glide = "4.11.0"
+    const val dagger2 = "2.38.1"
 
     object Kotlin {
         const val core = "1.6.0"

@@ -1,7 +1,7 @@
 package com.example.mytemplate.main.presenter
 
 import android.content.Context
-import com.example.mytemplate.api.GlobalApi
+import com.example.mytemplate.data.remote.GlobalApi
 import com.example.mytemplate.base.BasePresenter
 import com.example.mytemplate.base.ResponseApi
 import com.example.mytemplate.main.model.pojo.DefaultItemList

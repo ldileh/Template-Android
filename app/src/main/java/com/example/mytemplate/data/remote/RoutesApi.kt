@@ -1,4 +1,4 @@
-package com.example.mytemplate.api
+package com.example.mytemplate.data.remote
 
 import com.example.mytemplate.main.model.api.GithubRepoResponseModel
 import retrofit2.Call

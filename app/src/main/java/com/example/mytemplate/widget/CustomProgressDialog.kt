@@ -1,4 +1,4 @@
-package com.example.mytemplate.main.view.dialog
+package com.example.mytemplate.widget
 
 import android.app.Dialog
 import android.content.Context
