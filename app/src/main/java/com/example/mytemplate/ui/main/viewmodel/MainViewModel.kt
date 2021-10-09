@@ -27,7 +27,7 @@ class MainViewModel @Inject constructor(
                 SUCCESS ->
                     userRepoResult.postValue(result.data?.map { DefaultItemList(it.id, it.name) } ?: mutableListOf())
 
-                FAILED -> onError(result.message, result.code)
+                FAILED -> onError(result.message)
 
                 LOADING -> { }
             }
