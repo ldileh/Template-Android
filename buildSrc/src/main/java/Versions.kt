@@ -3,10 +3,14 @@ object Versions{
     const val appCompat = "1.3.1"
     const val material = "1.4.0"
     const val constraintLayout = "2.1.0"
+    const val androidSupport = "27.0.2"
     const val jUnit = "4.13.2"
     const val room = "2.3.0"
     const val glide = "4.11.0"
     const val dagger2 = "2.38.1"
+    const val lifecycle = "2.3.1"
+    const val hilt = "2.39.1"
+    const val timber = "5.0.1"
 
     object Kotlin {
         const val core = "1.6.0"
@@ -19,5 +23,11 @@ object Versions{
         const val core = "2.6.0"
         const val loggingInterceptor = "3.10.0"
         const val converterScalars = "2.5.0"
+    }
+
+    object HiltAndroidX{
+        const val viewModel = "1.0.0-alpha03"
+        const val compiler = "1.0.0-beta01"
+        const val activity = "1.1.0"
     }
 }

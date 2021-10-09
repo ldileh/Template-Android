@@ -1,8 +1,7 @@
-package com.example.mytemplate.utils
+package com.example.mytemplate.utils.others
 
 import android.annotation.SuppressLint
 import android.content.Context
-import android.content.SharedPreferences
 import android.os.Bundle
 import com.example.mytemplate.config.GlobalConfig
 
@@ -47,5 +46,5 @@ class SessionManager(private val context: Context) {
         return token != null && token.isNotEmpty()
     }
 
-    private fun getSessionSharedPreference() = context.getSharedPreferences(GlobalConfig.sharePreferenceSession, Context.MODE_PRIVATE)
+    private fun getSessionSharedPreference() = context.getSharedPreferences(GlobalConfig.SHARED_PREFERENCE_SESSION, Context.MODE_PRIVATE)
 }

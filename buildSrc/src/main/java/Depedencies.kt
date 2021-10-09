@@ -1,13 +1,17 @@
+@Suppress("unused")
 object BuildPlugins{
     const val android = "com.android.tools.build:gradle:${Versions.gradlePlugin}"
     const val kotlin = "org.jetbrains.kotlin:kotlin-gradle-plugin:${Versions.Kotlin.gradle}"
+    const val hilt = "com.google.dagger:hilt-android-gradle-plugin:${Versions.hilt}"
 }
 
+@Suppress("unused")
 object Deps {
     const val appCompat = "androidx.appcompat:appcompat:${Versions.appCompat}"
     const val material = "com.google.android.material:material:${Versions.material}"
     const val constraintLayout = "androidx.constraintlayout:constraintlayout:${Versions.constraintLayout}"
     const val jUnit = "junit:junit:${Versions.jUnit}"
+    const val androidSupport = "com.android.support:support-v4:${Versions.androidSupport}"
 
     const val KotlinCore = "androidx.core:core-ktx:${Versions.Kotlin.core}"
     const val KotlinStdlib = "org.jetbrains.kotlin:kotlin-stdlib-jdk8:${Versions.Kotlin.gradle}"
@@ -31,4 +35,16 @@ object Deps {
 
     const val GlideCore = "com.github.bumptech.glide:glide:${Versions.glide}"
     const val GlideCompiler = "com.github.bumptech.glide:compiler:${Versions.glide}"
+
+    const val LifecycleExt = "androidx.lifecycle:lifecycle-extensions:${Versions.lifecycle}"
+    const val LifecycleLiveData = "androidx.lifecycle:lifecycle-livedata-ktx:${Versions.lifecycle}"
+    const val LifecycleViewModel = "androidx.lifecycle:lifecycle-viewmodel-ktx:${Versions.lifecycle}"
+
+    const val Hilt = "com.google.dagger:hilt-android:${Versions.hilt}"
+    const val HiltCompiler = "com.google.dagger:hilt-android-compiler:${Versions.hilt}"
+    const val HiltViewModel = "androidx.hilt:hilt-lifecycle-viewmodel:${Versions.HiltAndroidX.viewModel}"
+    const val HiltViewModelCompiler = "androidx.hilt:hilt-compiler:${Versions.HiltAndroidX.compiler}"
+    const val HiltActivity = "androidx.activity:activity-ktx:${Versions.HiltAndroidX.activity}"
+
+    const val Timber = "com.jakewharton.timber:timber:${Versions.timber}"
 }

@@ -13,9 +13,7 @@ abstract class AppDatabase: RoomDatabase() {
     abstract fun userData(): AuthUserDao
 
     companion object{
-        private const val DB_NAME = "user_db"
-
-        fun getAppDatabase(context: Context) = Room.databaseBuilder(context, AppDatabase::class.java, DB_NAME)
+        fun getAppDatabase(context: Context) = Room.databaseBuilder(context, AppDatabase::class.java, GlobalConfig.DB_NAME)
                 .allowMainThreadQueries()
                 .build()
     }

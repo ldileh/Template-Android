@@ -1,4 +1,4 @@
-package com.example.mytemplate.utils
+package com.example.mytemplate.utils.others
 
 import android.content.Context
 import android.widget.Toast

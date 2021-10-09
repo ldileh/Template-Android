@@ -2,6 +2,7 @@ plugins{
     id 'com.android.application'
     id 'kotlin-android'
     id 'kotlin-kapt'
+    id 'dagger.hilt.android.plugin'
 }
 
 android {
@@ -18,9 +19,32 @@ android {
     }
 
     buildTypes {
+        debug{
+            minifyEnabled false
+            proguardFiles getDefaultProguardFile('proguard-android-optimize.txt'), 'proguard-rules.pro'
+
+            buildConfigField "String", "SERVER_URL", '"https://api.github.com/"'
+        }
+
         release {
             minifyEnabled false
             proguardFiles getDefaultProguardFile('proguard-android-optimize.txt'), 'proguard-rules.pro'
+
+            buildConfigField "String", "SERVER_URL", '"https://api.github.com/"'
+        }
+    }
+    flavorDimensions "version"
+    productFlavors {
+        demo {
+            // Assigns this product flavor to the "version" flavor dimension.
+            // If you are using only one dimension, this property is optional,
+            // and the plugin automatically assigns all the module's flavors to
+            // that dimension.
+            dimension "version"
+            applicationIdSuffix ".demo"
+        }
+        full {
+            dimension "version"
         }
     }
     buildFeatures{
@@ -37,22 +61,17 @@ android {
 
 dependencies {
     implementation fileTree(dir: 'libs', include: ['*.jar'])
+
+    // android libs
     implementation(Deps.appCompat)
     implementation(Deps.material)
-    testImplementation(Deps.jUnit)
+    implementation(Deps.androidSupport)
 
     // kotlin
     implementation(Deps.KotlinCore)
     implementation(Deps.KotlinStdlib)
     implementation(Deps.KotlinCoroutinesCore)
     implementation(Deps.KotlinCoroutinesAndroid)
-
-    // dagger
-    implementation Deps.DaggerCore
-    implementation Deps.DaggerAndroid
-    implementation Deps.DaggerAndroidSupport
-    kapt Deps.DaggerCompiler
-    kapt Deps.DaggerAndroidProcessor
 
     // room database
     implementation(Deps.RoomRuntime)
@@ -68,6 +87,23 @@ dependencies {
     // glide
     implementation(Deps.GlideCore)
     kapt(Deps.GlideCompiler)
+
+    // lifecycle
+    implementation(Deps.LifecycleLiveData)
+    implementation(Deps.LifecycleViewModel)
+
+    // hilt
+    implementation(Deps.Hilt)
+    implementation(Deps.HiltViewModel)
+    implementation(Deps.HiltActivity)
+    kapt(Deps.HiltCompiler)
+    kapt(Deps.HiltViewModelCompiler)
+
+    // unit testing
+    testImplementation(Deps.jUnit)
+
+    // timber
+    implementation(Deps.Timber)
 }
 
 repositories {

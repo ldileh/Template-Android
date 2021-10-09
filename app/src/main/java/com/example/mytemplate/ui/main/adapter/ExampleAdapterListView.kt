@@ -1,4 +1,4 @@
-package com.example.mytemplate.view.adapter
+package com.example.mytemplate.ui.main.adapter
 
 import android.annotation.SuppressLint
 import android.view.LayoutInflater
@@ -18,7 +18,11 @@ class ExampleAdapterListView(private val mItems: List<DefaultItemList>) : BaseAd
 
     @SuppressLint("ViewHolder")
     override fun getView(i: Int, view: View?, viewGroup: ViewGroup): View {
-        val binding = ListItemExampleBinding.inflate(LayoutInflater.from(viewGroup.context), viewGroup, false).also { binding ->
+        val binding = ListItemExampleBinding.inflate(
+            LayoutInflater.from(viewGroup.context),
+            viewGroup,
+            false
+        ).also { binding ->
             bind(binding, mItems[i])
         }
 
