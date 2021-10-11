@@ -1,6 +1,6 @@
 package com.example.mytemplate.data.remote
 
-import com.example.mytemplate.base.BaseService
+import com.example.core.base.BaseService
 import javax.inject.Inject
 
 class RemoteDataSource @Inject constructor(private val service: RemoteService): BaseService() {

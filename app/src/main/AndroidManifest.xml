@@ -17,7 +17,7 @@
         tools:ignore="AllowBackup,GoogleAppIndexingWarning,UnusedAttribute">
 
         <activity
-            android:name="com.example.mytemplate.ui.main.view.main.MainActivity"
+            android:name="com.example.mytemplate.ui.view.main.MainActivity"
             android:screenOrientation="portrait"
             tools:ignore="IntentFilterExportedReceiver,LockedOrientationActivity">
             <intent-filter>
@@ -27,7 +27,7 @@
             </intent-filter>
         </activity>
         <activity
-            android:name="com.example.mytemplate.ui.main.view.login.LoginActivity"
+            android:name="com.example.mytemplate.ui.view.login.LoginActivity"
             android:screenOrientation="portrait"
             tools:ignore="LockedOrientationActivity" />
     </application>

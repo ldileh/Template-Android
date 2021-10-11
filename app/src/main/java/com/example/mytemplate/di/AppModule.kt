@@ -1,7 +1,9 @@
 package com.example.mytemplate.di
 
 import android.content.Context
-import com.example.mytemplate.base.BaseService
+import com.example.core.base.BaseService
+import com.example.mytemplate.BuildConfig
+import com.example.mytemplate.config.GlobalConfig
 import com.example.mytemplate.data.local.LocalDataSourceImpl
 import com.example.mytemplate.data.remote.RemoteDataSource
 import com.example.mytemplate.data.remote.RemoteService
@@ -19,7 +21,11 @@ class AppModule {
 
     @Singleton
     @Provides
-    fun provideService() = BaseService.createService(RemoteService::class.java)
+    fun provideService() = BaseService.createService(
+        serviceClass = RemoteService::class.java,
+        url = BuildConfig.SERVER_URL,
+        isDebug = GlobalConfig.IS_DEBUG
+    )
 
     @Singleton
     @Provides
@@ -33,7 +39,7 @@ class AppModule {
 
     @Singleton
     @Provides
-    fun provideRepository(
+    fun provideUseCode(
         @ApplicationContext context: Context,
         remoteDataSource: RemoteDataSource,
         localDataSource: LocalDataSourceImpl,

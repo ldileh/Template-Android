@@ -23,14 +23,14 @@ android {
             minifyEnabled false
             proguardFiles getDefaultProguardFile('proguard-android-optimize.txt'), 'proguard-rules.pro'
 
-            buildConfigField "String", "SERVER_URL", '"https://api.github.com/"'
+            buildConfigField "String", "SERVER_URL", ConfigData.baseUrlDev
         }
 
         release {
             minifyEnabled false
             proguardFiles getDefaultProguardFile('proguard-android-optimize.txt'), 'proguard-rules.pro'
 
-            buildConfigField "String", "SERVER_URL", '"https://api.github.com/"'
+            buildConfigField "String", "SERVER_URL", ConfigData.baseUrlProd
         }
     }
     flavorDimensions "version"
@@ -60,53 +60,41 @@ android {
     kotlinOptions {
         jvmTarget = '1.8'
     }
+    kapt{
+        includeCompileClasspath false
+    }
 }
 
 dependencies {
     implementation fileTree(dir: 'libs', include: ['*.jar'])
+    api project(":core")
 
     // android libs
-    implementation(Deps.appCompat)
-    implementation(Deps.material)
-    implementation(Deps.androidSupport)
-
-    // kotlin
-    implementation(Deps.KotlinCore)
-    implementation(Deps.KotlinStdlib)
-    implementation(Deps.KotlinCoroutinesCore)
-    implementation(Deps.KotlinCoroutinesAndroid)
-
-    // room database
-    implementation(Deps.RoomRuntime)
-    kapt(Deps.RoomCompiler)
-
-    // retrofit
-    implementation(Deps.RetrofitOkhttp)
-    implementation(Deps.RetrofitCore)
-    implementation(Deps.RetrofitConverterGson)
-    implementation(Deps.RetrofitLoggingInterceptor)
-    implementation(Deps.RetrofitConverterScalars)
-
-    // glide
-    implementation(Deps.GlideCore)
-    kapt(Deps.GlideCompiler)
-
-    // lifecycle
-    implementation(Deps.LifecycleLiveData)
-    implementation(Deps.LifecycleViewModel)
+    implementation(Dependencies.appCompat)
+    implementation(Dependencies.material)
+    implementation(Dependencies.androidSupport)
 
     // hilt
-    implementation(Deps.Hilt)
-    implementation(Deps.HiltViewModel)
-    implementation(Deps.HiltActivity)
-    kapt(Deps.HiltCompiler)
-    kapt(Deps.HiltViewModelCompiler)
+    implementation(Dependencies.Hilt)
+    implementation(Dependencies.HiltViewModel)
+    implementation(Dependencies.HiltActivity)
+    implementation(Dependencies.HiltViewModelCompiler)
+    kapt(Dependencies.HiltCompiler)
+
+    // room database
+    implementation(Dependencies.RoomRuntime)
+    kapt(Dependencies.RoomCompiler)
+
+    // lifecycle
+    implementation(Dependencies.LifecycleLiveData)
+    implementation(Dependencies.LifecycleViewModel)
 
     // unit testing
-    testImplementation(Deps.jUnit)
+    implementation(Dependencies.jUnit)
 
-    // timber
-    implementation(Deps.Timber)
+    // parceler
+    implementation(Dependencies.ParcelerApi)
+    kapt(Dependencies.Parceler)
 }
 
 repositories {

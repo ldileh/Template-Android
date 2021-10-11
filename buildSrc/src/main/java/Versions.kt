@@ -4,13 +4,14 @@ object Versions{
     const val material = "1.4.0"
     const val constraintLayout = "2.1.0"
     const val androidSupport = "27.0.2"
-    const val jUnit = "4.13.2"
+    const val jUnit = "1.1.3"
     const val room = "2.3.0"
     const val glide = "4.11.0"
     const val dagger2 = "2.38.1"
     const val lifecycle = "2.3.1"
     const val hilt = "2.39.1"
     const val timber = "5.0.1"
+    const val parceler = "1.1.12"
 
     object Kotlin {
         const val core = "1.6.0"
