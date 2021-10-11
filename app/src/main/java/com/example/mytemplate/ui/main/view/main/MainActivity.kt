@@ -16,9 +16,11 @@ class MainActivity : BaseActivity<ActivityMainBinding, MainViewModel>(ActivityMa
 
     override fun toolbarId(): Int? = null
 
-    override fun onViewCreated(savedInstanceState: Bundle?) {
+    override fun ActivityMainBinding.onViewCreated(savedInstanceState: Bundle?) {
         // example call api
         callApi()
+
+        viewRefresh.setOnRefreshListener { callApi() }
     }
 
     override fun viewModelObserver(vm: MainViewModel) {
@@ -37,17 +39,7 @@ class MainActivity : BaseActivity<ActivityMainBinding, MainViewModel>(ActivityMa
         viewModel = mViewModel
     }
 
-    override fun ActivityMainBinding.initViewBinding() {
-        apply {
-            viewRefresh.setOnRefreshListener {
-                mViewModel.getUserRepo("mojombo")
-            }
-        }
-    }
-
     private fun callApi() {
-        progressDialog.showDialog(true)
-
         mViewModel.getUserRepo("mojombo")
     }
 

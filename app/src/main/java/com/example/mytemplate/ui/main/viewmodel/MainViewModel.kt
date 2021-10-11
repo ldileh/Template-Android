@@ -14,8 +14,8 @@ class MainViewModel @Inject constructor(
     private val repository: MainUseCase
 ) : BaseViewModel() {
 
-    val eventLoadUserRepo: MutableLiveData<Boolean> by lazy { MutableLiveData<Boolean>(false) }
-    val userRepoResult: MutableLiveData<List<DefaultItemList>> by lazy { MutableLiveData<List<DefaultItemList>>() }
+    val eventLoadUserRepo: MutableLiveData<Boolean> = MutableLiveData()
+    val userRepoResult: MutableLiveData<List<DefaultItemList>> = MutableLiveData()
 
     fun getUserRepo(username: String) = launch {
         eventLoadUserRepo.postValue(true)
@@ -24,8 +24,9 @@ class MainViewModel @Inject constructor(
             eventLoadUserRepo.postValue(false)
 
             when(result.status){
-                SUCCESS ->
-                    userRepoResult.postValue(result.data?.map { DefaultItemList(it.id, it.name) } ?: mutableListOf())
+                SUCCESS -> userRepoResult.postValue(
+                    result.data?.map { DefaultItemList(it.id, it.name) } ?: mutableListOf()
+                )
 
                 FAILED -> onError(result.message)
 

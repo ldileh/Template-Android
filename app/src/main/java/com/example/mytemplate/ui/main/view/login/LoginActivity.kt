@@ -9,11 +9,7 @@ class LoginActivity : BaseActivity<ActivityLoginBinding, LoginViewModel>(Activit
 
     override fun toolbarId(): Int? = null
 
-    override fun onViewCreated(savedInstanceState: Bundle?) {
-
-    }
-
-    override fun ActivityLoginBinding.initViewBinding() {
+    override fun ActivityLoginBinding.onViewCreated(savedInstanceState: Bundle?) {
 
     }
 }

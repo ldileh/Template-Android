@@ -34,7 +34,8 @@ class AppModule {
     @Singleton
     @Provides
     fun provideRepository(
+        @ApplicationContext context: Context,
         remoteDataSource: RemoteDataSource,
         localDataSource: LocalDataSourceImpl,
-    ) = MainUseCase(remoteDataSource, localDataSource)
+    ) = MainUseCase(context, remoteDataSource, localDataSource)
 }

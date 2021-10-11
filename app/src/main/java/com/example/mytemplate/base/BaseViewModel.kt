@@ -13,20 +13,26 @@ open class BaseViewModel(private val dispatcher: CoroutineDispatcher = Dispatche
     override val coroutineContext: CoroutineContext get() = dispatcher + supervisorJob
 
     val eventMessage: MutableLiveData<String> by lazy { MutableLiveData<String>() }
+    val eventRestart: MutableLiveData<Boolean> by lazy { MutableLiveData<Boolean>() }
 
     fun onError(msg: String?){
         eventMessage.postValue(msg?:"")
     }
 
+    /**
+     * Handle response from remote data.
+     * In this case, handle response code token expired to inform ui
+     */
     suspend inline fun <T> ResultRepository<T>.getResultCase(crossinline callback: (result: ResultRepository<T>) -> Unit){
         withContext(Dispatchers.Main){
             if (code != null){
-                if (code == 401){
-
-                }
-            }
-
-            callback(this@getResultCase)
+                // check if response code is token expired
+                if (code == 401)
+                    eventRestart.postValue(true)
+                else
+                    callback(this@getResultCase)
+            }else
+                callback(this@getResultCase)
         }
     }
 }
