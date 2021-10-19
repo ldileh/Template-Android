@@ -78,6 +78,7 @@ dependencies {
     implementation(Dependencies.Hilt)
     implementation(Dependencies.HiltViewModel)
     implementation(Dependencies.HiltActivity)
+    implementation(Dependencies.HiltFragment)
     implementation(Dependencies.HiltViewModelCompiler)
     kapt(Dependencies.HiltCompiler)
 

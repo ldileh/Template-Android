@@ -11,6 +11,7 @@ object Dependencies {
     const val material = "com.google.android.material:material:${Versions.material}"
     const val constraintLayout = "androidx.constraintlayout:constraintlayout:${Versions.constraintLayout}"
     const val androidSupport = "com.android.support:support-v4:${Versions.androidSupport}"
+    const val lifeCycleJava = "androidx.lifecycle:lifecycle-common-java8:${Versions.lifeCycleJava}"
 
     const val KotlinCore = "androidx.core:core-ktx:${Versions.Kotlin.core}"
     const val KotlinStdlib = "org.jetbrains.kotlin:kotlin-stdlib-jdk8:${Versions.Kotlin.gradle}"
@@ -44,6 +45,7 @@ object Dependencies {
     const val HiltViewModel = "androidx.hilt:hilt-lifecycle-viewmodel:${Versions.HiltAndroidX.viewModel}"
     const val HiltViewModelCompiler = "androidx.hilt:hilt-compiler:${Versions.HiltAndroidX.compiler}"
     const val HiltActivity = "androidx.activity:activity-ktx:${Versions.HiltAndroidX.activity}"
+    const val HiltFragment = "androidx.fragment:fragment-ktx:${Versions.HiltAndroidX.fragment}"
 
     const val Timber = "com.jakewharton.timber:timber:${Versions.timber}"
 

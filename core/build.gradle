@@ -36,6 +36,7 @@ android {
 dependencies {
     // android libs
     implementation(Dependencies.appCompat)
+    api(Dependencies.lifeCycleJava)
 
     // kotlin
     api(Dependencies.KotlinCore)

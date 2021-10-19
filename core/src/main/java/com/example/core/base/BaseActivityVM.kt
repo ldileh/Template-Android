@@ -13,9 +13,7 @@ import com.example.core.utils.ext.showToast
 abstract class BaseActivityVM<T: ViewBinding, A: BaseViewModel>(private val bindingFactory: (LayoutInflater) -> T) : AppCompatActivity() {
 
     /** use this attribute to show progress dialog */
-    val progressDialog: CustomProgressDialog by lazy {
-        CustomProgressDialog(this)
-    }
+    private val progressDialog: CustomProgressDialog by lazy { CustomProgressDialog(this) }
 
     protected var viewModel: A? = null
 
@@ -87,4 +85,10 @@ abstract class BaseActivityVM<T: ViewBinding, A: BaseViewModel>(private val bind
             supportActionBar?.setDisplayHomeAsUpEnabled(false)
         }
     }
+
+    /**
+     * show/hide progress dialog
+     * @param isShow param show/hide
+     */
+    fun showProgressDialog(isShow: Boolean) = progressDialog.showDialog(isShow)
 }

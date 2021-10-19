@@ -12,6 +12,7 @@ object Versions{
     const val hilt = "2.39.1"
     const val timber = "5.0.1"
     const val parceler = "1.1.12"
+    const val lifeCycleJava = "2.3.1"
 
     object Kotlin {
         const val core = "1.6.0"
@@ -29,6 +30,7 @@ object Versions{
     object HiltAndroidX{
         const val viewModel = "1.0.0-alpha03"
         const val compiler = "1.0.0-beta01"
-        const val activity = "1.1.0"
+        const val activity = "1.3.1"
+        const val fragment = "1.3.6"
     }
 }
