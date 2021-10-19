@@ -2,7 +2,7 @@ package com.example.mytemplate.ui.view.main
 
 import android.os.Bundle
 import androidx.activity.viewModels
-import com.example.core.base.BaseActivity
+import com.example.core.base.BaseActivityVM
 import com.example.mytemplate.data.local.model.DefaultItemList
 import com.example.mytemplate.databinding.ActivityMainBinding
 import com.example.mytemplate.ui.adapter.ExampleAdapterListView
@@ -10,7 +10,7 @@ import com.example.mytemplate.ui.viewmodel.MainViewModel
 import dagger.hilt.android.AndroidEntryPoint
 
 @AndroidEntryPoint
-class MainActivity : BaseActivity<ActivityMainBinding, MainViewModel>(ActivityMainBinding::inflate) {
+class MainActivity : BaseActivityVM<ActivityMainBinding, MainViewModel>(ActivityMainBinding::inflate) {
 
     private val mViewModel: MainViewModel by viewModels()
 

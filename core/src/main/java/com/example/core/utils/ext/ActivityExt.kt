@@ -7,6 +7,7 @@ import android.widget.Toast
 import androidx.annotation.RequiresApi
 
 @RequiresApi(Build.VERSION_CODES.JELLY_BEAN)
+@Suppress("unused")
 fun Activity.forceCloseApp(){
     showToast("Close app")
 
@@ -18,12 +19,14 @@ fun Activity.forceCloseApp(){
 }
 
 @RequiresApi(Build.VERSION_CODES.JELLY_BEAN)
+@Suppress("unused")
 fun Context.forceCloseApp(){
     if (this is Activity){
         forceCloseApp()
     }
 }
 
+@Suppress("unused")
 fun Context.showToast(msg: String?) = try {
     Toast.makeText(this, msg, Toast.LENGTH_SHORT).show()
 }catch (e: Exception){

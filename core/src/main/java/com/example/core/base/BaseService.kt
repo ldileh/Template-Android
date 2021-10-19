@@ -25,7 +25,10 @@ abstract class BaseService {
                 error("Empty body response: ${response.message()}")
 
             else ->
-                error(message = "${response.code()}: ${response.message()}", code = response.code())
+                error(
+                    message = "${response.code()}: ${response.message()}",
+                    code = response.code()
+                )
         }
     } catch (e: Exception) {
         error(message = e.message ?: e.toString(), e = e)

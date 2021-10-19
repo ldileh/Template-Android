@@ -12,8 +12,8 @@ open class BaseViewModel(private val dispatcher: CoroutineDispatcher = Dispatche
 
     override val coroutineContext: CoroutineContext get() = dispatcher + supervisorJob
 
-    val eventMessage: MutableLiveData<String> by lazy { MutableLiveData<String>() }
-    val eventRestart: MutableLiveData<Boolean> by lazy { MutableLiveData<Boolean>() }
+    val eventMessage = MutableLiveData<String>()
+    val eventRestart = MutableLiveData<Boolean>()
 
     fun onError(msg: String?){
         eventMessage.postValue(msg?:"")

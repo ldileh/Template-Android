@@ -2,26 +2,28 @@ package com.example.mytemplate.config
 
 import android.annotation.SuppressLint
 import android.content.Context
+import android.content.SharedPreferences
 import android.os.Bundle
 
+@Suppress("unused")
 class SessionManager(private val context: Context) {
 
     companion object{
-        const val KEY_TOKEN = "key_token"
-        const val KEY_NAME = "key_name"
-        const val KEY_USERNAME = "key_username"
+        private const val KEY_TOKEN = "key_token"
+        private const val KEY_NAME = "key_name"
+        private const val KEY_USERNAME = "key_username"
     }
 
     @SuppressLint("CommitPrefEdits")
     fun setSession(data: Bundle?) {
-        data?.let {
+        data?.also {
             // set editor
-            val editor = getSessionSharedPreference().edit()
-            editor.putString(KEY_TOKEN, data.getString(KEY_TOKEN))
-            editor.putString(KEY_NAME, data.getString(KEY_NAME))
-            editor.putString(KEY_USERNAME, data.getString(KEY_USERNAME))
-            editor.apply()
-            editor.commit()
+            getSessionSharedPreference().edit().apply {
+                putString(KEY_TOKEN, it.getString(KEY_TOKEN))
+                putString(KEY_NAME, it.getString(KEY_NAME))
+                putString(KEY_USERNAME, it.getString(KEY_USERNAME))
+                apply()
+            }
         }
     }
 
@@ -29,22 +31,19 @@ class SessionManager(private val context: Context) {
      * Clear shared preference
      */
     @SuppressLint("CommitPrefEdits")
-    fun clearSession(callback: () -> Unit){
+    inline fun clearSession(callback: () -> Unit){
         getSessionSharedPreference().edit().clear().apply()
         callback()
     }
 
-    @Suppress
-    fun getToken(): String? = getSessionSharedPreference().getString(KEY_TOKEN, null)
+    fun getToken() = getSessionSharedPreference().getString(KEY_TOKEN, null)
 
-    fun getName(): String? = getSessionSharedPreference().getString(KEY_NAME, null)
+    fun getName() = getSessionSharedPreference().getString(KEY_NAME, null)
 
-    fun getUsername(): String? = getSessionSharedPreference().getString(KEY_USERNAME, null)
+    fun getUsername() = getSessionSharedPreference().getString(KEY_USERNAME, null)
 
-    fun isExist(): Boolean {
-        val token = getToken()
-        return token != null && token.isNotEmpty()
-    }
+    fun isExist() = getToken().let { it != null && it.isNotEmpty() }
 
-    private fun getSessionSharedPreference() = context.getSharedPreferences(GlobalConfig.SHARED_PREFERENCE_SESSION, Context.MODE_PRIVATE)
+    fun getSessionSharedPreference(): SharedPreferences =
+        context.getSharedPreferences(GlobalConfig.SHARED_PREFERENCE_SESSION, Context.MODE_PRIVATE)
 }

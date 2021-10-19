@@ -31,15 +31,23 @@ class AppModule {
     @Provides
     fun provideRemoteDataSource(service: RemoteService) = RemoteDataSource(service)
 
+    /**
+     * @param context Context of application
+     */
     @Singleton
     @Provides
     fun provideLocalDataSource(
         @ApplicationContext context: Context
     ) = LocalDataSourceImpl(context)
 
+    /**
+     * @param context Context of Application
+     * @param remoteDataSource Remote data source (example : Endpoint)
+     * @param localDataSource local data source (example : database local device or shared preference data)
+     */
     @Singleton
     @Provides
-    fun provideUseCode(
+    fun provideUseCase(
         @ApplicationContext context: Context,
         remoteDataSource: RemoteDataSource,
         localDataSource: LocalDataSourceImpl,
