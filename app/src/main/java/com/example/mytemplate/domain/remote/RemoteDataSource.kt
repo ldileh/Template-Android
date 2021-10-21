@@ -1,4 +1,4 @@
-package com.example.mytemplate.data.remote
+package com.example.mytemplate.domain.remote
 
 import com.example.core.base.BaseService
 import javax.inject.Inject

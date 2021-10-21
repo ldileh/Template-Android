@@ -4,10 +4,10 @@ import android.content.Context
 import com.example.core.base.BaseService
 import com.example.mytemplate.BuildConfig
 import com.example.mytemplate.config.GlobalConfig
-import com.example.mytemplate.data.local.LocalDataSourceImpl
-import com.example.mytemplate.data.remote.RemoteDataSource
-import com.example.mytemplate.data.remote.RemoteService
-import com.example.mytemplate.data.usecase.MainUseCase
+import com.example.mytemplate.domain.local.LocalDataSourceImpl
+import com.example.mytemplate.domain.remote.RemoteDataSource
+import com.example.mytemplate.domain.remote.RemoteService
+import com.example.mytemplate.domain.usecase.MainUseCase
 import dagger.Module
 import dagger.Provides
 import dagger.hilt.InstallIn

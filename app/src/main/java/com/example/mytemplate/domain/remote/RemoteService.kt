@@ -1,6 +1,6 @@
-package com.example.mytemplate.data.remote
+package com.example.mytemplate.domain.remote
 
-import com.example.mytemplate.data.remote.model.GithubRepoResponse
+import com.example.mytemplate.domain.remote.model.GithubRepoResponse
 import retrofit2.Call
 import retrofit2.Response
 import retrofit2.http.GET

@@ -4,7 +4,7 @@ import android.os.Bundle
 import androidx.activity.viewModels
 import com.example.core.base.BaseActivityVM
 import com.example.core.utils.PageMessageUtil
-import com.example.mytemplate.data.local.model.DefaultItemList
+import com.example.mytemplate.domain.local.model.DefaultItemList
 import com.example.mytemplate.databinding.ActivityMainBinding
 import com.example.mytemplate.ui.adapter.ExampleAdapterListView
 import com.example.mytemplate.ui.viewmodel.MainViewModel

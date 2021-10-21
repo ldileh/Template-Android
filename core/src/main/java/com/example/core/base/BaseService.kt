@@ -1,9 +1,11 @@
 package com.example.core.base
 
-import com.example.core.utils.ResultRepository
+import com.example.core.utils.Resource
 import com.example.core.utils.RetrofitConfig
 import com.example.core.utils.ext.logError
+import retrofit2.HttpException
 import retrofit2.Response
+import java.io.IOException
 
 abstract class BaseService {
 
@@ -14,32 +16,49 @@ abstract class BaseService {
             .create(serviceClass)
     }
 
-    protected suspend fun <T> getResult(call: suspend () -> Response<T>): ResultRepository<T> = try {
+    protected suspend fun <T> getResult(call: suspend () -> Response<T>): Resource<T> {
         val response = call()
 
-        when{
-            response.isSuccessful && response.body() != null ->
-                ResultRepository.success(response.body())
+        return try {
+            if(response.isSuccessful)
+                Resource.Success(response.body())
+            else
+                responseError(exception = HttpException(response), message = response.message(), code = response.code())
+        } catch (e: Exception) {
+            // log exception errir
+            logError("failed call endpoint: ${e.message}")
 
-            response.isSuccessful && response.body() == null ->
-                error("Empty body response: ${response.message()}")
+            // close request
+            response.errorBody()?.close()
 
-            else ->
-                error(
-                    message = "${response.code()}: ${response.message()}",
-                    code = response.code()
-                )
+            // return response error to ui
+            responseError(exception = e, message = e.message ?: e.toString())
         }
-    } catch (e: Exception) {
-        error(message = e.message ?: e.toString(), e = e)
     }
 
-    private fun <T> error(message: String, code: Int? = null, e: Exception? = null): ResultRepository<T> {
-        logError(message, e)
+    private fun <T> responseError(message: String, code: Int? = null, exception: Exception? = null): Resource<T> {
+        val tmpMsg = if(message.isNotEmpty()) message else "Something went wrong!"
 
-        return ResultRepository.error(
-            msg = "Network call has failed for a following reason: $message",
-            code = code
-        )
+        logError(tmpMsg, exception)
+
+        return Resource.Failure(when(exception){
+            is IOException -> Resource.Failure.ErrorHolder.NetworkConnection("No internet connection")
+
+            else -> exception.handleResponseError(code, tmpMsg)
+        })
+    }
+
+    /**
+     * handle response error from body request data.
+     * just add some http code on case HttpException
+     */
+    private fun Exception?.handleResponseError(code: Int?, message: String): Resource.Failure.ErrorHolder = when(this){
+        is HttpException -> when(code){
+            401 -> Resource.Failure.ErrorHolder.UnAuthorized(message)
+
+            else -> Resource.Failure.ErrorHolder.InternalServerError(message)
+        }
+
+        else -> Resource.Failure.ErrorHolder.InternalServerError(message)
     }
 }

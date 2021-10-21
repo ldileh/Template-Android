@@ -6,7 +6,7 @@ import android.view.View
 import android.view.ViewGroup
 import android.widget.BaseAdapter
 import com.example.mytemplate.databinding.ListItemExampleBinding
-import com.example.mytemplate.data.local.model.DefaultItemList
+import com.example.mytemplate.domain.local.model.DefaultItemList
 
 class ExampleAdapterListView(private val mItems: List<DefaultItemList>) : BaseAdapter() {
 

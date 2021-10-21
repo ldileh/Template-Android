@@ -2,7 +2,7 @@ package com.example.core.base
 
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
-import com.example.core.utils.ResultRepository
+import com.example.core.utils.Resource
 import kotlinx.coroutines.*
 import kotlin.coroutines.CoroutineContext
 
@@ -15,24 +15,25 @@ open class BaseViewModel(private val dispatcher: CoroutineDispatcher = Dispatche
     val eventMessage = MutableLiveData<String>()
     val eventRestart = MutableLiveData<Boolean>()
 
-    fun onError(msg: String?){
-        eventMessage.postValue(msg?:"")
+    fun onError(error: Resource.Failure.ErrorHolder?){
+        error?.let { err -> eventMessage.postValue(err.message) }
     }
 
     /**
      * Handle response from remote data.
      * In this case, handle response code token expired to inform ui
      */
-    suspend inline fun <T> ResultRepository<T>.getResultCase(crossinline callback: (result: ResultRepository<T>) -> Unit){
+    suspend fun <T> Resource<T>.getResultCase(callback: suspend (result: Resource<T>) -> Unit){
         withContext(Dispatchers.Main){
-            if (code != null)
-                // check if response code is token expired
-                if (code == 401)
+            if(error != null){
+                // handle token expired
+                if(error is Resource.Failure.ErrorHolder.UnAuthorized){
                     eventRestart.postValue(true)
-                else
-                    callback(this@getResultCase)
-            else
-                callback(this@getResultCase)
+                }
+            }
+
+            // return result
+            callback(this@getResultCase)
         }
     }
 }

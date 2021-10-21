@@ -1,4 +1,4 @@
-package com.example.mytemplate.data.local.model
+package com.example.mytemplate.domain.local.model
 
 data class DefaultItemList(
     val id: Int = -1,

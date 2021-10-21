@@ -1,3 +1,3 @@
-package com.example.mytemplate.data.remote.model
+package com.example.mytemplate.domain.remote.model
 
 class GithubRepoResponse : ArrayList<GithubRepoResponseItem>()

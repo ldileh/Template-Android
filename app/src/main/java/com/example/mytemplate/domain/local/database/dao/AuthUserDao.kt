@@ -1,8 +1,8 @@
-package com.example.mytemplate.data.local.database.dao
+package com.example.mytemplate.domain.local.database.dao
 
 import androidx.room.Dao
 import androidx.room.Insert
-import com.example.mytemplate.data.local.database.AuthUser
+import com.example.mytemplate.domain.local.database.AuthUser
 
 @Dao
 interface AuthUserDao {

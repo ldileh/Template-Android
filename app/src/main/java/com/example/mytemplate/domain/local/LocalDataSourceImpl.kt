@@ -1,4 +1,4 @@
-package com.example.mytemplate.data.local
+package com.example.mytemplate.domain.local
 
 import android.content.Context
 import android.os.Bundle
