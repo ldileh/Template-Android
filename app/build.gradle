@@ -71,7 +71,6 @@ dependencies {
 
     // android libs
     implementation(Dependencies.appCompat)
-    implementation(Dependencies.material)
     implementation(Dependencies.androidSupport)
 
     // hilt

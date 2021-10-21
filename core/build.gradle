@@ -36,6 +36,7 @@ android {
 dependencies {
     // android libs
     implementation(Dependencies.appCompat)
+    api(Dependencies.material)
     api(Dependencies.lifeCycleJava)
 
     // kotlin

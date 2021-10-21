@@ -7,17 +7,34 @@ import androidx.annotation.IdRes
 import androidx.appcompat.app.AppCompatActivity
 import androidx.viewbinding.ViewBinding
 import com.example.core.component.dialog.CustomProgressDialog
+import com.example.core.config.BaseConfig
+import com.example.core.utils.PageMessageUtil
 import com.example.core.utils.ext.forceCloseApp
-import com.example.core.utils.ext.showToast
 
 abstract class BaseActivityVM<T: ViewBinding, A: BaseViewModel>(private val bindingFactory: (LayoutInflater) -> T) : AppCompatActivity() {
 
     /** use this attribute to show progress dialog */
     private val progressDialog: CustomProgressDialog by lazy { CustomProgressDialog(this) }
 
+    /**
+     * view model of page
+     */
     protected var viewModel: A? = null
 
+    /**
+     * view binding of page
+     */
     lateinit var binding: T
+
+    /**
+     * default message type of page
+     */
+    open var messageType = BaseConfig.messageType
+
+    /**
+     * message util of page
+     */
+    private lateinit var messageUtil: PageMessageUtil
 
     override fun onStart() {
         super.onStart()
@@ -35,6 +52,8 @@ abstract class BaseActivityVM<T: ViewBinding, A: BaseViewModel>(private val bind
         setContentView(binding.root)
         initViewModel()
         viewModel?.let { vm -> viewModelObserver(vm) }
+
+        messageUtil = PageMessageUtil(this@BaseActivityVM, binding.root)
 
         configureToolbar()
         binding.onViewCreated(savedInstanceState)
@@ -62,7 +81,7 @@ abstract class BaseActivityVM<T: ViewBinding, A: BaseViewModel>(private val bind
      */
     open fun viewModelObserver(vm: A) {
         vm.apply {
-            eventMessage.observe(this@BaseActivityVM, { msg -> this@BaseActivityVM.showToast(msg) })
+            eventMessage.observe(this@BaseActivityVM, { msg -> messageUtil.showMessage(messageType, msg) })
 
             eventRestart.observe(this@BaseActivityVM, { result ->
                 if (result)

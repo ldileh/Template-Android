@@ -18,6 +18,7 @@ class MainViewModel @Inject constructor(
     val userRepoResult = MutableLiveData<List<DefaultItemList>>()
 
     fun getUserRepo(username: String) = launch {
+        eventMessage.postValue("Test, hello!")
         eventLoadUserRepo.postValue(true)
 
         repository.callUsers(username).getResultCase { result ->
