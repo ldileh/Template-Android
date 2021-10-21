@@ -4,7 +4,7 @@ import android.content.Context
 import com.example.core.base.BaseService
 import com.example.mytemplate.BuildConfig
 import com.example.mytemplate.config.GlobalConfig
-import com.example.mytemplate.domain.local.LocalDataSourceImpl
+import com.example.mytemplate.domain.local.LocalDataSource
 import com.example.mytemplate.domain.remote.RemoteDataSource
 import com.example.mytemplate.domain.remote.RemoteService
 import com.example.mytemplate.domain.usecase.MainUseCase
@@ -38,7 +38,7 @@ class AppModule {
     @Provides
     fun provideLocalDataSource(
         @ApplicationContext context: Context
-    ) = LocalDataSourceImpl(context)
+    ) = LocalDataSource(context)
 
     /**
      * @param context Context of Application
@@ -50,6 +50,6 @@ class AppModule {
     fun provideUseCase(
         @ApplicationContext context: Context,
         remoteDataSource: RemoteDataSource,
-        localDataSource: LocalDataSourceImpl,
+        localDataSource: LocalDataSource,
     ) = MainUseCase(context, remoteDataSource, localDataSource)
 }

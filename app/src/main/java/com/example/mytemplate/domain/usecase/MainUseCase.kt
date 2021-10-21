@@ -3,7 +3,7 @@ package com.example.mytemplate.domain.usecase
 import android.content.Context
 import android.os.Bundle
 import com.example.core.base.BaseUseCase
-import com.example.mytemplate.domain.local.LocalDataSourceImpl
+import com.example.mytemplate.domain.local.LocalDataSource
 import com.example.mytemplate.domain.remote.RemoteDataSource
 import javax.inject.Inject
 
@@ -11,7 +11,7 @@ import javax.inject.Inject
 class MainUseCase @Inject constructor(
     context: Context,
     private val remoteData: RemoteDataSource,
-    private val localData: LocalDataSourceImpl
+    private val localData: LocalDataSource
 ): BaseUseCase(context) {
 
     suspend fun callUsers(username: String) = handleResponse { remoteData.getUserRepo(username) }
