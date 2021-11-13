@@ -43,7 +43,7 @@ abstract class BaseActivityVM<T: ViewBinding, A: BaseViewModel>(private val bind
     }
 
     /**
-     * this method used for initialize current pattern on app.
+     * initialize current pattern on app.
      * @see AppCompatActivity.onCreate
      */
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -83,10 +83,7 @@ abstract class BaseActivityVM<T: ViewBinding, A: BaseViewModel>(private val bind
         vm.apply {
             eventMessage.observe(this@BaseActivityVM, { msg -> messageUtil.showMessage(messageType, msg) })
 
-            eventRestart.observe(this@BaseActivityVM, { result ->
-                if (result)
-                    this@BaseActivityVM.forceCloseApp()
-            })
+            eventRestart.observe(this@BaseActivityVM, { result -> if (result) this@BaseActivityVM.forceCloseApp() })
         }
     }
 

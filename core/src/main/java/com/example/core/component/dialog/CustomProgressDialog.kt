@@ -14,7 +14,7 @@ class CustomProgressDialog(context: Context) : Dialog(context) {
         setCancelable(false)
     }
 
-    override fun onCreate(savedInstanceState: Bundle) {
+    override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.dialog_progress)
     }

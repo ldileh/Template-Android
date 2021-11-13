@@ -62,10 +62,7 @@ abstract class BaseFragmentVM<T: ViewBinding, A: BaseViewModel>(private val bind
         vm.apply {
             eventMessage.observe(viewLifecycleOwner, { msg -> messageUtil.showMessage(messageType, msg) })
 
-            eventRestart.observe(viewLifecycleOwner, { result ->
-                if (result)
-                    getBaseActivity()?.forceCloseApp()
-            })
+            eventRestart.observe(viewLifecycleOwner, { result -> if (result) getBaseActivity()?.forceCloseApp() })
         }
     }
 

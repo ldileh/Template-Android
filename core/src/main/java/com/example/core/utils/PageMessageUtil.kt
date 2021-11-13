@@ -11,6 +11,7 @@ import com.example.core.utils.ext.showToast
 class PageMessageUtil(
     private val context: Context,
     private val view: View,
+    private val buttonActionTextColor: Int? = null
 ) {
 
     enum class Type{
@@ -22,7 +23,7 @@ class PageMessageUtil(
      */
     fun showMessage(type: Type, msg: String){
         when(type){
-            Type.SNACK_BAR -> view.showSnackBarClose(msg)
+            Type.SNACK_BAR -> view.showSnackBarClose(msg = msg, buttonActionTextColor = buttonActionTextColor)
             else -> context.showToast(msg)
         }
     }

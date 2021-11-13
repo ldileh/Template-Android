@@ -43,7 +43,7 @@ class MainActivity : BaseActivityVM<ActivityMainBinding, MainViewModel>(Activity
     }
 
     private fun callApi() {
-        mViewModel.getUserRepo("mojombo")
+        viewModel?.getUserRepo("mojombo")
     }
 
     private fun ActivityMainBinding.configureListView(mItems: List<DefaultItemList>) {
