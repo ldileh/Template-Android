@@ -11,7 +11,7 @@ import javax.inject.Inject
 
 @HiltViewModel
 class MainViewModel @Inject constructor(
-    private val repository: MainUseCase
+    private val useCase: MainUseCase
 ) : BaseViewModel() {
 
     val eventLoadUserRepo = MutableLiveData<Boolean>()
@@ -21,7 +21,7 @@ class MainViewModel @Inject constructor(
         eventMessage.postValue("Test, hello!")
         eventLoadUserRepo.postValue(true)
 
-        repository.callUsers(username).getResultCase { result ->
+        useCase.callUsers(username).getResultCase { result ->
             eventLoadUserRepo.postValue(false)
 
             when(result){

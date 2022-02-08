@@ -25,7 +25,7 @@ abstract class BaseService {
             else
                 responseError(exception = HttpException(response), message = response.message(), code = response.code())
         } catch (e: Exception) {
-            // log exception errir
+            // log exception error
             logError("failed call endpoint: ${e.message}")
 
             // close request
@@ -37,7 +37,7 @@ abstract class BaseService {
     }
 
     private fun <T> responseError(message: String, code: Int? = null, exception: Exception? = null): Resource<T> {
-        val tmpMsg = if(message.isNotEmpty()) message else "Something went wrong!"
+        val tmpMsg = message.ifEmpty { "Something went wrong!" }
 
         logError(tmpMsg, exception)
 

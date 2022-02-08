@@ -14,11 +14,6 @@ import com.example.core.utils.ext.viewLifecycleLazy
 abstract class BaseFragmentVM<T: ViewBinding, A: BaseViewModel>(private val bindingFactory: (View) -> T): Fragment() {
 
     /**
-     * view model of page
-     */
-    protected var viewModel: A? = null
-
-    /**
      * view binding of page
      */
     @Suppress
@@ -39,8 +34,7 @@ abstract class BaseFragmentVM<T: ViewBinding, A: BaseViewModel>(private val bind
 
         messageUtil = PageMessageUtil(requireContext(), binding.root)
 
-        initViewModel()
-        viewModel?.let { vm -> viewModelObserver(vm) }
+        getViewModel().vmObserver()
         binding.onViewCreated(savedInstanceState)
     }
 
@@ -55,21 +49,22 @@ abstract class BaseFragmentVM<T: ViewBinding, A: BaseViewModel>(private val bind
      * handle global event from BaseViewModel.
      * 1. show message
      * 2. handle token expired from remote data
-     *
-     * @param vm view model on current page
      */
-    open fun viewModelObserver(vm: A) {
-        vm.apply {
-            eventMessage.observe(viewLifecycleOwner, { msg -> messageUtil.showMessage(messageType, msg) })
-
-            eventRestart.observe(viewLifecycleOwner, { result -> if (result) getBaseActivity()?.forceCloseApp() })
+    open fun A.vmObserver() = apply {
+        eventMessage.observe(viewLifecycleOwner) { msg ->
+            messageUtil.showMessage(
+                messageType,
+                msg
+            )
         }
+
+        eventRestart.observe(viewLifecycleOwner) { result -> if (result) getBaseActivity()?.forceCloseApp() }
     }
 
     /**
      * Initialize current model on fragment
      */
-    open fun initViewModel(){ }
+    abstract fun getViewModel(): A
 
     /**
      * show/hide progress dialog

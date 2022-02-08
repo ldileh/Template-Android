@@ -8,7 +8,7 @@ import android.widget.BaseAdapter
 import com.example.mytemplate.databinding.ListItemExampleBinding
 import com.example.mytemplate.domain.local.model.DefaultItemList
 
-class ExampleAdapterListView(private val mItems: List<DefaultItemList>) : BaseAdapter() {
+class ExampleAdapterListView(private val mItems: List<DefaultItemList>, private val callback: () -> Unit) : BaseAdapter() {
 
     override fun getCount(): Int = mItems.size
 
@@ -32,5 +32,9 @@ class ExampleAdapterListView(private val mItems: List<DefaultItemList>) : BaseAd
     private fun bind(binding: ListItemExampleBinding, data: DefaultItemList) {
         binding.tvId.text = data.id.toString()
         binding.tvText.text = data.text
+
+        binding.root.setOnClickListener {
+            callback()
+        }
     }
 }

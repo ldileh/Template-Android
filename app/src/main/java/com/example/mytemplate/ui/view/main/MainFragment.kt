@@ -13,13 +13,7 @@ class MainFragment: BaseFragmentVM<FragmentMainBinding, MainViewModel>(FragmentM
 
     override fun FragmentMainBinding.onViewCreated(savedInstanceState: Bundle?) { }
 
-    override fun initViewModel() {
-        super.initViewModel()
+    override fun MainViewModel.vmObserver() = apply {  }
 
-        viewModel = mViewModel
-    }
-
-    override fun viewModelObserver(vm: MainViewModel) {
-        super.viewModelObserver(vm.apply { })
-    }
+    override fun getViewModel(): MainViewModel = mViewModel
 }

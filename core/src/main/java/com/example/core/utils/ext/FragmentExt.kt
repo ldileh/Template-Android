@@ -20,7 +20,7 @@ fun <T> Fragment.viewLifecycleLazy(initialise: () -> T): ReadOnlyProperty<Fragme
             // Observe the View Lifecycle of the Fragment
             this@viewLifecycleLazy
                 .viewLifecycleOwnerLiveData
-                .observe(this@viewLifecycleLazy, { newLifecycleOwner ->
+                .observe(this@viewLifecycleLazy) { newLifecycleOwner ->
                     viewLifecycleOwner
                         ?.lifecycle
                         ?.removeObserver(this)
@@ -28,7 +28,7 @@ fun <T> Fragment.viewLifecycleLazy(initialise: () -> T): ReadOnlyProperty<Fragme
                     viewLifecycleOwner = newLifecycleOwner.also {
                         it.lifecycle.addObserver(this)
                     }
-                })
+                }
         }
 
         override fun onDestroy(owner: LifecycleOwner) {
