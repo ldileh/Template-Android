@@ -16,18 +16,13 @@ abstract class BaseService {
             .create(serviceClass)
     }
 
-    protected suspend fun <T> getResult(call: suspend () -> Response<T>): Resource<T> {
-        val response = call()
-
-        return try {
+    protected suspend fun <T> getResult(call: suspend () -> Response<T>): Resource<T> = call().let { response ->
+        try {
             if(response.isSuccessful)
                 Resource.Success(response.body())
             else
                 responseError(exception = HttpException(response), message = response.message(), code = response.code())
         } catch (e: Exception) {
-            // log exception error
-            logError("failed call endpoint: ${e.message}")
-
             // close request
             response.errorBody()?.close()
 

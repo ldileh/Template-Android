@@ -41,15 +41,13 @@ class AppModule {
     ) = LocalDataSource(context)
 
     /**
-     * @param context Context of Application
      * @param remoteDataSource Remote data source (example : Endpoint)
      * @param localDataSource local data source (example : database local device or shared preference data)
      */
     @Singleton
     @Provides
     fun provideUseCase(
-        @ApplicationContext context: Context,
         remoteDataSource: RemoteDataSource,
         localDataSource: LocalDataSource,
-    ) = MainUseCase(context, remoteDataSource, localDataSource)
+    ) = MainUseCase(remoteDataSource, localDataSource)
 }

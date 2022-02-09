@@ -1,10 +1,15 @@
 package com.example.core.base
 
-import android.content.Context
 import com.example.core.utils.Resource
 
 @Suppress("unused")
-abstract class BaseUseCase(private val context: Context){
+abstract class BaseUseCase {
 
-    suspend fun <T> handleResponse(call: suspend () -> Resource<T>): Resource<T> = call()
+    suspend fun <T> handleResponse(call: suspend () -> Resource<T>): Resource<T> = call().also { result ->
+        // tell use case if token is expired
+        if (result.error is Resource.Failure.ErrorHolder.UnAuthorized)
+            onTokenExpired()
+    }
+
+    protected abstract fun onTokenExpired()
 }

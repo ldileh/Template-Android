@@ -1,3 +1,5 @@
+import org.gradle.api.JavaVersion
+
 @Suppress("unused")
 object ConfigData {
     const val minSdk = 21
@@ -8,4 +10,6 @@ object ConfigData {
 
     const val baseUrlDev = "\"https://api.github.com/\""
     const val baseUrlProd = "\"https://api.github.com/\""
+
+    const val kotlinJvmTarget = "1.8"
 }
