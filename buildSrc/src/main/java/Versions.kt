@@ -9,7 +9,7 @@ object Versions{
     const val glide = "4.11.0"
     const val dagger2 = "2.38.1"
     const val lifecycle = "2.3.1"
-    const val hilt = "2.39.1"
+    const val hilt = "2.40.5"
     const val timber = "5.0.1"
     const val parceler = "1.1.12"
     const val lifeCycleJava = "2.3.1"

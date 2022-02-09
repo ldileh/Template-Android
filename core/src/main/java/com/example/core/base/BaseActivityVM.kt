@@ -6,20 +6,20 @@ import com.example.core.utils.ext.forceCloseApp
 
 abstract class BaseActivityVM<T: ViewBinding, A: BaseViewModel>(bindingFactory: (LayoutInflater) -> T) : BaseActivity<T>(bindingFactory) {
 
+    abstract val viewModel: A
+
     override fun onBeforeViewCreated() {
         super.onBeforeViewCreated()
 
-        getViewModel().vmObserver()
+        viewModel.observeViewModel()
     }
-
-    abstract fun getViewModel(): A
 
     /**
      * handle global event from BaseViewModel.
      * 1. show message
      * 2. handle token expired from remote data
      */
-    open fun A.vmObserver() = apply {
+    open fun A.observeViewModel() = apply {
         eventMessage.observe(this@BaseActivityVM) { msg ->
             getMessageUtil(this@BaseActivityVM)?.showMessage(
                 messageType,

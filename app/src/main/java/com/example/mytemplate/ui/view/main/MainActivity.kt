@@ -13,7 +13,7 @@ import dagger.hilt.android.AndroidEntryPoint
 @AndroidEntryPoint
 class MainActivity : BaseActivityVM<ActivityMainBinding, MainViewModel>(ActivityMainBinding::inflate) {
 
-    private val mViewModel: MainViewModel by viewModels()
+    override val viewModel: MainViewModel by viewModels()
 
     override var messageType: PageMessageUtil.Type = PageMessageUtil.Type.SNACK_BAR
 
@@ -26,9 +26,7 @@ class MainActivity : BaseActivityVM<ActivityMainBinding, MainViewModel>(Activity
         viewRefresh.setOnRefreshListener { callApi() }
     }
 
-    override fun getViewModel(): MainViewModel = mViewModel
-
-    override fun MainViewModel.vmObserver() = apply {
+    override fun MainViewModel.observeViewModel() = apply {
         eventLoadUserRepo.observe(this@MainActivity) { binding.viewRefresh.isRefreshing = it }
 
         userRepoResult.observe(this@MainActivity) { result ->
@@ -37,7 +35,7 @@ class MainActivity : BaseActivityVM<ActivityMainBinding, MainViewModel>(Activity
     }
 
     private fun callApi() {
-        getViewModel().getUserRepo("mojombo")
+        viewModel.getUserRepo("mojombo")
     }
 
     private fun ActivityMainBinding.configureListView(mItems: List<DefaultItemList>) {
