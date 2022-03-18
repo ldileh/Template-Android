@@ -17,8 +17,6 @@ class MainActivity : BaseActivityVM<ActivityMainBinding, MainViewModel>(Activity
 
     override var messageType: PageMessageUtil.Type = PageMessageUtil.Type.SNACK_BAR
 
-    override fun toolbarId(): Int? = null
-
     override fun ActivityMainBinding.onViewCreated(savedInstanceState: Bundle?) {
         // example call api
         callApi()

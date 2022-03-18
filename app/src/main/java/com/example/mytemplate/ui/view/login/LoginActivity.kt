@@ -7,8 +7,6 @@ import com.example.mytemplate.databinding.ActivityLoginBinding
 
 class LoginActivity : BaseActivity<ActivityLoginBinding>(ActivityLoginBinding::inflate) {
 
-    override fun toolbarId(): Int? = null
-
     override fun ActivityLoginBinding.onViewCreated(savedInstanceState: Bundle?) {
 
     }

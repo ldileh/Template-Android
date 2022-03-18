@@ -46,7 +46,7 @@ abstract class BaseActivity<T: ViewBinding>(private val bindingFactory: (LayoutI
      * init toolbar resource id if exist
      */
     @IdRes
-    abstract fun toolbarId(): Int?
+    open fun toolbarId(): Int? = null
 
     /**
      * set event of view after prepare all condition on page
