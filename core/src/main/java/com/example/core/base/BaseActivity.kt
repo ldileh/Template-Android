@@ -26,6 +26,8 @@ abstract class BaseActivity<T: ViewBinding>(private val bindingFactory: (LayoutI
      */
     open var messageType = BaseConfig.messageType
 
+    open var isDisplayHomeAsUp = false
+
     override fun onStart() {
         super.onStart()
 
@@ -71,7 +73,7 @@ abstract class BaseActivity<T: ViewBinding>(private val bindingFactory: (LayoutI
     private fun configureToolbar(){
         toolbarId()?.apply {
             setSupportActionBar(findViewById(this))
-            supportActionBar?.setDisplayHomeAsUpEnabled(false)
+            supportActionBar?.setDisplayHomeAsUpEnabled(isDisplayHomeAsUp)
         }
     }
 }
