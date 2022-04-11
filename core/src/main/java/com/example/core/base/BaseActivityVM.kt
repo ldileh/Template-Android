@@ -11,7 +11,7 @@ abstract class BaseActivityVM<T: ViewBinding, A: BaseViewModel>(bindingFactory: 
     override fun onBeforeViewCreated() {
         super.onBeforeViewCreated()
 
-        viewModel.observeViewModel()
+        observeViewModel(viewModel)
     }
 
     /**
@@ -19,14 +19,16 @@ abstract class BaseActivityVM<T: ViewBinding, A: BaseViewModel>(bindingFactory: 
      * 1. show message
      * 2. handle token expired from remote data
      */
-    open fun A.observeViewModel() = apply {
-        eventMessage.observe(this@BaseActivityVM) { msg ->
-            getMessageUtil(this@BaseActivityVM)?.showMessage(
-                messageType,
-                msg
-            )
-        }
+    open fun observeViewModel(viewModel: A){
+        viewModel.apply {
+            eventMessage.observe(this@BaseActivityVM) { msg ->
+                getMessageUtil(this@BaseActivityVM)?.showMessage(
+                    messageType,
+                    msg
+                )
 
-        eventRestart.observe(this@BaseActivityVM) { result -> if (result) this@BaseActivityVM.forceCloseApp() }
+            }
+            eventRestart.observe(this@BaseActivityVM) { result -> if (result) this@BaseActivityVM.forceCloseApp() }
+        }
     }
 }
