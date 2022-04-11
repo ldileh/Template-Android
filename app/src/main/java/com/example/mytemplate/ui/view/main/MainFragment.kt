@@ -9,11 +9,9 @@ import com.example.mytemplate.ui.viewmodel.MainViewModel
 @Suppress("unused")
 class MainFragment: BaseFragmentVM<FragmentMainBinding, MainViewModel>(FragmentMainBinding::bind) {
 
-    private val mViewModel: MainViewModel by viewModels()
+    override val viewModel: MainViewModel by viewModels()
 
     override fun FragmentMainBinding.onViewCreated(savedInstanceState: Bundle?) { }
 
     override fun MainViewModel.vmObserver() = apply {  }
-
-    override fun getViewModel(): MainViewModel = mViewModel
 }

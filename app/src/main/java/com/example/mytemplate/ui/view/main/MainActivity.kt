@@ -24,12 +24,14 @@ class MainActivity : BaseActivityVM<ActivityMainBinding, MainViewModel>(Activity
         viewRefresh.setOnRefreshListener { callApi() }
     }
 
-    override fun MainViewModel.observeViewModel() = apply {
-        eventLoadUserRepo.observe(this@MainActivity) { binding.viewRefresh.isRefreshing = it }
+    override fun observeViewModel(viewModel: MainViewModel) {
+        super.observeViewModel(viewModel.apply {
+            eventLoadUserRepo.observe(this@MainActivity) { binding.viewRefresh.isRefreshing = it }
 
-        userRepoResult.observe(this@MainActivity) { result ->
-            binding.configureListView(result ?: mutableListOf())
-        }
+            userRepoResult.observe(this@MainActivity) { result ->
+                binding.configureListView(result ?: mutableListOf())
+            }
+        })
     }
 
     private fun callApi() {
