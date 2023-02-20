@@ -1,11 +1,13 @@
 package com.example.core.base
 
+import android.content.Context
 import android.os.Bundle
 import android.view.View
 import androidx.appcompat.app.AppCompatActivity
 import androidx.fragment.app.Fragment
 import androidx.viewbinding.ViewBinding
 import com.example.core.config.BaseConfig
+import com.example.core.utils.PageMessageUtil
 import com.example.core.utils.ext.viewLifecycleLazy
 
 @Suppress("unused")
@@ -37,4 +39,6 @@ abstract class BaseFragment<T: ViewBinding>(bindingFactory: (View) -> T): Fragme
     abstract fun T.onViewCreated(savedInstanceState: Bundle?)
 
     open fun onBeforeViewCreated() { }
+
+    open fun getMessageUtil(context: Context): PageMessageUtil? = PageMessageUtil(requireContext(), binding.root)
 }

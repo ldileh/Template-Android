@@ -13,16 +13,10 @@ abstract class BaseFragmentVM<T: ViewBinding, A: BaseViewModel>(bindingFactory: 
      */
     abstract val viewModel: A
 
-    /**
-     * message util of page
-     */
-    private lateinit var messageUtil: PageMessageUtil
-
     override fun onBeforeViewCreated() {
         super.onBeforeViewCreated()
 
-        messageUtil = PageMessageUtil(requireContext(), binding.root)
-        viewModel.vmObserver()
+        observeViewModel(viewModel)
     }
 
     /**
@@ -30,15 +24,17 @@ abstract class BaseFragmentVM<T: ViewBinding, A: BaseViewModel>(bindingFactory: 
      * 1. show message
      * 2. handle token expired from remote data
      */
-    open fun A.vmObserver() = apply {
-        eventMessage.observe(viewLifecycleOwner) { msg ->
-            messageUtil.showMessage(
-                messageType,
-                msg
-            )
-        }
+    open fun observeViewModel(viewModel: A) {
+        viewModel.apply {
+            eventMessage.observe(viewLifecycleOwner) { msg ->
+                getMessageUtil(requireContext())?.showMessage(
+                    messageType,
+                    msg
+                )
+            }
 
-        eventRestart.observe(viewLifecycleOwner) { result -> if (result) getBaseActivity()?.forceCloseApp() }
+            eventRestart.observe(viewLifecycleOwner) { result -> if (result) getBaseActivity()?.forceCloseApp() }
+        }
     }
 
     /**
