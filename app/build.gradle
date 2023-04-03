@@ -2,10 +2,11 @@ plugins{
     id 'com.android.application'
     id 'kotlin-android'
     id 'kotlin-kapt'
-    id 'dagger.hilt.android.plugin'
+    id 'com.google.dagger.hilt.android'
 }
 
 android {
+    namespace 'com.example.mytemplate'
     compileSdk ConfigData.sdk
 
     defaultConfig {
@@ -75,7 +76,6 @@ dependencies {
 
     // hilt
     implementation(Dependencies.Hilt)
-    implementation(Dependencies.HiltViewModel)
     implementation(Dependencies.HiltActivity)
     implementation(Dependencies.HiltFragment)
     implementation(Dependencies.HiltViewModelCompiler)
@@ -90,15 +90,18 @@ dependencies {
     implementation(Dependencies.LifecycleViewModel)
 
     // unit testing
-    implementation(Dependencies.jUnit)
+    testImplementation(Dependencies.jUnitAndroidx)
+    testImplementation(Dependencies.jUnit)
+    testImplementation(Dependencies.mockito)
+    testImplementation(Dependencies.coreTesting)
+    testImplementation(Dependencies.truth)
+    testImplementation(Dependencies.hiltTesting)
+    androidTestImplementation(Dependencies.hiltTesting)
+    kaptTest(Dependencies.hiltCompilerTesting)
 
     // parceler
     implementation(Dependencies.ParcelerApi)
     kapt(Dependencies.Parceler)
-}
-
-repositories {
-    mavenCentral()
 }
 
 kapt {

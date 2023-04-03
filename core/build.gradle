@@ -57,7 +57,7 @@ dependencies {
     kapt(Dependencies.GlideCompiler)
 
     // unit testing
-    api(Dependencies.jUnit)
+    api(Dependencies.jUnitAndroidx)
 
     // timber
     api(Dependencies.Timber)

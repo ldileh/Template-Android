@@ -27,6 +27,7 @@ object Dependencies {
     const val RetrofitLoggingInterceptor = "com.squareup.okhttp3:logging-interceptor:${Versions.Retrofit.loggingInterceptor}"
     const val RetrofitConverterScalars = "com.squareup.retrofit2:converter-scalars:${Versions.Retrofit.converterScalars}"
 
+    // unused, move to dagger hilt
     const val DaggerCore = "com.google.dagger:dagger:${Versions.dagger2}"
     const val DaggerCompiler = "com.google.dagger:dagger-compiler:${Versions.dagger2}"
     const val DaggerAndroid = "com.google.dagger:dagger-android:${Versions.dagger2}"
@@ -52,5 +53,13 @@ object Dependencies {
     const val Parceler = "org.parceler:parceler:${Versions.parceler}"
     const val ParcelerApi = "org.parceler:parceler-api:${Versions.parceler}"
 
-    const val jUnit = "androidx.test.ext:junit:${Versions.jUnit}"
+    // unit testing
+    const val jUnitAndroidx = "androidx.test.ext:junit:${Versions.jUnitAndroidTest}"
+    const val jUnit = "junit:junit:${Versions.jUnit}"
+    const val mockito = "org.mockito:mockito-core:${Versions.mockito}"
+    const val coreTesting = "androidx.arch.core:core-testing:${Versions.coreTesting}"
+    const val truth = "com.google.truth:truth:${Versions.truth}"
+    // Robolectric tests, instrumented tests, and with kotlin
+    const val hiltTesting = "com.google.dagger:hilt-android-testing:${Versions.hiltTesting}"
+    const val hiltCompilerTesting = "com.google.dagger:hilt-android-compiler:${Versions.hiltTesting}"
 }
