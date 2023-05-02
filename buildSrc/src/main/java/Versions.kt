@@ -3,7 +3,7 @@ object Versions{
     const val appCompat = "1.6.1"
     const val material = "1.8.0"
     const val constraintLayout = "2.1.4"
-    const val androidSupport = "27.0.2"
+    const val androidSupport = "28.0.0"
     const val jUnitAndroidTest = "1.1.5"
     const val room = "2.3.0"
     const val glide = "4.11.0"

@@ -7,7 +7,6 @@ import com.example.mytemplate.config.GlobalConfig
 import com.example.mytemplate.domain.local.LocalDataSource
 import com.example.mytemplate.domain.remote.RemoteDataSource
 import com.example.mytemplate.domain.remote.RemoteService
-import com.example.mytemplate.domain.usecase.MainUseCase
 import dagger.Module
 import dagger.Provides
 import dagger.hilt.InstallIn
@@ -36,18 +35,5 @@ class AppModule {
      */
     @Singleton
     @Provides
-    fun provideLocalDataSource(
-        @ApplicationContext context: Context
-    ) = LocalDataSource(context)
-
-    /**
-     * @param remoteDataSource Remote data source (example : Endpoint)
-     * @param localDataSource local data source (example : database local device or shared preference data)
-     */
-    @Singleton
-    @Provides
-    fun provideUseCase(
-        remoteDataSource: RemoteDataSource,
-        localDataSource: LocalDataSource,
-    ) = MainUseCase(remoteDataSource, localDataSource)
+    fun provideLocalDataSource(@ApplicationContext context: Context) = LocalDataSource(context)
 }
