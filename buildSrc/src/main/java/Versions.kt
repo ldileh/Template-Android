@@ -1,5 +1,6 @@
 object Versions{
-    const val gradlePlugin = "7.4.2"
+    const val kotlinJvmTarget = "17"
+    const val gradlePlugin = "8.0.1"
     const val appCompat = "1.6.1"
     const val material = "1.8.0"
     const val constraintLayout = "2.1.4"
@@ -18,6 +19,7 @@ object Versions{
     const val coreTesting = "2.2.0"
     const val truth = "1.1.3"
     const val hiltTesting = "2.45"
+    const val kotlin = "1.8.20"
 
     object Kotlin {
         const val core = "1.9.0"

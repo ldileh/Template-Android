@@ -1,35 +1,31 @@
 plugins {
-    id 'com.android.library'
-    id 'kotlin-android'
-    id 'kotlin-kapt'
+    id("com.android.library")
+    kotlin("android")
+    kotlin("kapt")
 }
 
 android {
-    compileSdk ConfigData.sdk
+    namespace = "com.example.core"
+    compileSdk = ConfigData.sdk
 
     defaultConfig {
-        minSdk ConfigData.minSdk
-        targetSdk ConfigData.targetSdk
+        minSdk = ConfigData.minSdk
 
-        testInstrumentationRunner "androidx.test.runner.AndroidJUnitRunner"
-        consumerProguardFiles "consumer-rules.pro"
+        testInstrumentationRunner = "androidx.test.runner.AndroidJUnitRunner"
+        consumerProguardFiles("consumer-rules.pro")
     }
 
-    buildTypes {
-        release {
-            minifyEnabled false
-            proguardFiles getDefaultProguardFile('proguard-android-optimize.txt'), 'proguard-rules.pro'
-        }
+    buildFeatures{
+        viewBinding = true
+        dataBinding = true
     }
-    viewBinding {
-        enabled true
-    }
+
     compileOptions {
-        sourceCompatibility JavaVersion.VERSION_1_8
-        targetCompatibility JavaVersion.VERSION_1_8
+        sourceCompatibility = JavaVersion.VERSION_17
+        targetCompatibility = JavaVersion.VERSION_17
     }
     kotlinOptions {
-        jvmTarget = ConfigData.kotlinJvmTarget
+        jvmTarget = Versions.kotlinJvmTarget
     }
 }
 
