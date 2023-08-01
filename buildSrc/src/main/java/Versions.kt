@@ -1,6 +1,6 @@
 object Versions{
     const val kotlinJvmTarget = "17"
-    const val gradlePlugin = "8.0.1"
+    const val gradlePlugin = "8.1.0"
     const val appCompat = "1.6.1"
     const val material = "1.8.0"
     const val constraintLayout = "2.1.4"
