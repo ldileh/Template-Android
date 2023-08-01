@@ -50,9 +50,6 @@ object Dependencies {
 
     const val Timber = "com.jakewharton.timber:timber:${Versions.timber}"
 
-    const val Parceler = "org.parceler:parceler:${Versions.parceler}"
-    const val ParcelerApi = "org.parceler:parceler-api:${Versions.parceler}"
-
     // unit testing
     const val jUnitAndroidx = "androidx.test.ext:junit:${Versions.jUnitAndroidTest}"
     const val jUnit = "junit:junit:${Versions.jUnit}"

@@ -96,10 +96,6 @@ dependencies {
     testImplementation(Dependencies.hiltTesting)
     androidTestImplementation(Dependencies.hiltTesting)
     kaptTest(Dependencies.hiltCompilerTesting)
-
-    // parceler
-    implementation(Dependencies.ParcelerApi)
-    kapt(Dependencies.Parceler)
 }
 
 kapt {
