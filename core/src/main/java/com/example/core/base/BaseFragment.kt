@@ -16,7 +16,6 @@ abstract class BaseFragment<T: ViewBinding>(bindingFactory: (View) -> T): Fragme
     /**
      * view binding of page
      */
-    @Suppress
     val binding: T by viewLifecycleLazy{ bindingFactory(requireView()) }
 
     /**

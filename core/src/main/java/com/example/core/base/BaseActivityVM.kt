@@ -4,7 +4,9 @@ import android.view.LayoutInflater
 import androidx.viewbinding.ViewBinding
 import com.example.core.utils.ext.forceCloseApp
 
-abstract class BaseActivityVM<T: ViewBinding, A: BaseViewModel>(bindingFactory: (LayoutInflater) -> T) : BaseActivity<T>(bindingFactory) {
+abstract class BaseActivityVM<T: ViewBinding, A: BaseViewModel>(
+    bindingFactory: (LayoutInflater) -> T
+) : BaseActivity<T>(bindingFactory) {
 
     abstract val viewModel: A
 
@@ -28,7 +30,9 @@ abstract class BaseActivityVM<T: ViewBinding, A: BaseViewModel>(bindingFactory: 
                 )
 
             }
-            eventRestart.observe(this@BaseActivityVM) { result -> if (result) this@BaseActivityVM.forceCloseApp() }
+            eventRestart.observe(this@BaseActivityVM) { result ->
+                if (result) this@BaseActivityVM.forceCloseApp()
+            }
         }
     }
 }

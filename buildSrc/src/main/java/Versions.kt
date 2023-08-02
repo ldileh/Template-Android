@@ -12,7 +12,6 @@ object Versions{
     const val lifecycle = "2.3.1"
     const val hilt = "2.44"
     const val timber = "5.0.1"
-    const val parceler = "1.1.12"
     const val lifeCycleJava = "2.3.1"
     const val jUnit = "4.13.2"
     const val mockito = "5.2.0"
@@ -37,7 +36,7 @@ object Versions{
     object HiltAndroidX{
         const val viewModel = "2.34"
         const val compiler = "1.0.0"
-        const val activity = "1.7.0"
-        const val fragment = "1.5.6"
+        const val activity = "1.7.2"
+        const val fragment = "1.6.0"
     }
 }
