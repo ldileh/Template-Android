@@ -1,14 +1,17 @@
 package com.example.mytemplate.config
 
-object GlobalConfig {
-    const val isDebug = true
+import com.example.mytemplate.BuildConfig
 
-    // base url of application
-    private const val baseUrlExample = "https://api.github.com/"
-    private const val baseUrlProduction = baseUrlExample
-    private const val baseUrlDev = baseUrlExample
-    val baseUrl: String get() = if (isDebug) baseUrlDev else baseUrlProduction
+object GlobalConfig {
+    // check if build app is debug or not
+    const val IS_DEBUG = BuildConfig.BUILD_TYPE == "debug"
+
+    // name of app
+    private const val APP_NAME = "app"
 
     // shared preference
-    const val sharePreferenceSession = "template_sp_session"
+    const val SHARED_PREFERENCE_SESSION = "${APP_NAME}_sp_session"
+
+    // name of database
+    const val DB_NAME = "${APP_NAME}_db"
 }

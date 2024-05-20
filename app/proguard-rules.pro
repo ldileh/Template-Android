@@ -1,6 +1,6 @@
 # Add project specific ProGuard rules here.
 # You can control the set of applied configuration files using the
-# proguardFiles setting in build.gradle.
+# proguardFiles setting in build.gradle.kts.
 #
 # For more details, see
 #   http://developer.android.com/guide/developing/tools/proguard.html
@@ -20,9 +20,5 @@
 # hide the original source file name.
 #-renamesourcefileattribute SourceFile
 
--keep public class * implements com.bumptech.glide.module.GlideModule
--keep public class * extends com.bumptech.glide.module.AppGlideModule
--keep public enum com.bumptech.glide.load.ImageHeaderParser$** {
-  **[] $VALUES;
-  public *;
-}
+# Keep class names of Hilt injected ViewModels since their name are used as a multibinding map key.
+-keepnames @dagger.hilt.android.lifecycle.HiltViewModel class * extends androidx.lifecycle.ViewModel
