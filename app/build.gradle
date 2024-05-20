@@ -1,0 +1,75 @@
+plugins{
+    id 'com.android.application'
+    id 'kotlin-android'
+    id 'kotlin-kapt'
+}
+
+android {
+    compileSdk ConfigData.sdk
+
+    defaultConfig {
+        applicationId "com.example.mytemplate"
+        minSdk ConfigData.minSdk
+        targetSdk ConfigData.targetSdk
+        versionCode ConfigData.versionCode
+        versionName ConfigData.versionName
+
+        testInstrumentationRunner "androidx.test.runner.AndroidJUnitRunner"
+    }
+
+    buildTypes {
+        release {
+            minifyEnabled false
+            proguardFiles getDefaultProguardFile('proguard-android-optimize.txt'), 'proguard-rules.pro'
+        }
+    }
+    buildFeatures{
+        viewBinding true
+    }
+    compileOptions {
+        sourceCompatibility JavaVersion.VERSION_1_8
+        targetCompatibility JavaVersion.VERSION_1_8
+    }
+    kotlinOptions {
+        jvmTarget = '1.8'
+    }
+}
+
+dependencies {
+    implementation fileTree(dir: 'libs', include: ['*.jar'])
+    implementation(Deps.appCompat)
+    implementation(Deps.material)
+    testImplementation(Deps.jUnit)
+
+    // kotlin
+    implementation(Deps.KotlinCore)
+    implementation(Deps.KotlinStdlib)
+    implementation(Deps.KotlinCoroutinesCore)
+    implementation(Deps.KotlinCoroutinesAndroid)
+
+    // dagger
+    implementation Deps.DaggerCore
+    implementation Deps.DaggerAndroid
+    implementation Deps.DaggerAndroidSupport
+    kapt Deps.DaggerCompiler
+    kapt Deps.DaggerAndroidProcessor
+
+    // room database
+    implementation(Deps.RoomRuntime)
+    kapt(Deps.RoomCompiler)
+
+    // retrofit
+    implementation(Deps.RetrofitOkhttp)
+    implementation(Deps.RetrofitCore)
+    implementation(Deps.RetrofitConverterGson)
+    implementation(Deps.RetrofitLoggingInterceptor)
+    implementation(Deps.RetrofitConverterScalars)
+
+    // glide
+    implementation(Deps.GlideCore)
+    kapt(Deps.GlideCompiler)
+}
+
+repositories {
+    mavenCentral()
+}

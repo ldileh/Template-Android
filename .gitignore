@@ -152,7 +152,6 @@ obj/
 .idea/dynamic.xml
 .idea/uiDesigner.xml
 .idea/codeStyles/
-.idea/deploymentTargetDropDown.xml
 
 # OS-specific files
 .DS_Store
@@ -201,4 +200,3 @@ fabric.properties
 !/gradle/wrapper/gradle-wrapper.jar
 
 # End of https://www.gitignore.io/api/android,androidstudio
-/.idea/kotlinc.xml
